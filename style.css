@@ -1,0 +1,60 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    height: 100dvh;
+    background-color: #F2D5B3;
+}
+
+.logo {
+    width: 80px;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    height: 80px;
+    width: 100%;
+}
+
+.buscar {
+    height: 15px;
+    border-radius: 80px;
+    width: 90px;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background-color: #52362B;
+    border-radius: 80px;
+    width: 245px;
+    height: 30px;
+}
+
+details summary::-webkit-details-marker { 
+    display: none; 
+}
+
+details summary::marker {
+    list-style: none;
+    padding-left: 28px; /* espaço para o ícone */
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 18px;
+    cursor: pointer;
+    background-image: url('./images/icons/menu-svgrepo-com.svg');
+}
+
