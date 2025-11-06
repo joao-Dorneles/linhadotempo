@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
+    
 </head>
 <body>
 
@@ -22,7 +26,7 @@
         <nav class="nav-bar">
             <input class="buscar" type="text" placeholder="Buscar...">
 
-            <div class="link-menu">
+            <div id="menu" class="link-menu desativado">
                 <ul>
                     <li><a href="#">Início</a></li>
                     <li><a href="#">Sobre Nós</a></li>
@@ -34,10 +38,35 @@
 
             <button class="menu-burguer">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <path fill="white" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+                <path fill="white" d="M3 6h18v2H3z"/>
+                <path fill="white" d="M3 11h18v2H3z"/>
+                <path fill="white" d="M3 16h18v2H3z"/>
             </svg>
 
         </nav>
+        <div class="jogos">
+            <a id="link-jogos" href="#"><img id="controle-video-game" src="./images/icons/controle-de-video-game.png" alt="icon-jogos"></a>
+        </div>
     </header>
+
+    <main>
+            <img class="fundo" src="./images/icons/fundo.png" alt="background">
+            <h1 class="boas-vindas">Bem vindo a<br>Linha do Tempo</h1>
+
+            <button class="b-cardapio">Cardápio</button>
+
+    <script>
+        const menuBurguer = document.querySelector('.menu-burguer');
+        const menu = document.getElementById('menu');
+
+        menuBurguer.addEventListener('click', () => {
+            menu.classList.toggle('desativado');
+        });
+
+        // animação em X do menu hamburguer
+        document.querySelector('.menu-burguer').addEventListener('click', function() {
+        this.classList.toggle('active');
+    });
+    </script>
 </body>
 </html>

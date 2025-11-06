@@ -1,6 +1,7 @@
 html, body{
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 /* * {
@@ -12,6 +13,16 @@ body {
     display: flex;
     height: 100dvh;
     background-color:#F2D5B3;
+    flex-direction: column;
+
+}
+
+@font-face {
+    font-family: "InkNutAntiqua";
+    src: url(./fonts/InknutAntiqua-Regular.woff2) format("woff2"),
+    url(./fonts/InknutAntiqua-Regular.woff) format("woff");
+    font-weight: normal;
+    font-style: normal;
 }
 
 header {
@@ -46,7 +57,27 @@ header {
     position: absolute;
     right: 5px;
     top: 7px;
+    transition: 0.5s;
 }
+
+/* animacao em x do botão de menu */
+.menu-burguer svg path {
+    transition: transform 0.3s ease;
+    transform-origin: center;
+}
+
+.menu-burguer.active svg path:nth-child(1) {
+    transform: translateY(4px) rotate(40deg);
+}
+
+.menu-burguer.active svg path:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-burguer.active svg path:nth-child(3) {
+    transform: translateY(-4px) rotate(-40deg);
+}
+
 .nav-bar{
     display: flex;
     justify-content: space-between;
@@ -60,17 +91,50 @@ header {
     border-radius: 100px;
 }
 
+/* menu desativado */
+.link-menu.desativado {
+    animation: transicao2 0.2s ease-in-out forwards;
+
+}
+
+/* menu aberto */
 .link-menu {
-    display: none;
+    display: flex;
     background-color: #52362B;
     flex-direction: column;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 7px;
+    right: 40px;
     z-index: 1000;
     justify-content: left;
     border-radius: 10px;
+    border: #F2D5B3 3px solid;
+    animation: transicao 0.2s ease-in-out;
 }
+
+@keyframes transicao {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes transicao2 {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        display: none;
+    }
+}
+
 
 li {
     list-style: none;
@@ -84,6 +148,90 @@ a {
     font-weight: 300;
     margin-left: 0px;
     margin-right: 30px;
-    
+    -webkit-tap-highlight-color: transparent;
 }
+
+a:hover {
+    text-decoration: underline;
+}
+
+.jogos {
+    position: absolute;
+    right: 10px;
+    top: 44px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: #52362B;
+    transition: 0.5s;
+}
+
+
+
+.jogos:hover {
+    transform: scale(1.1);
+}
+
+#controle-video-game {
+    position: absolute;
+    right: 7.2px;
+    top: 7px;
+    width: 25px;
+    margin: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: 0.5s;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fundo {
+    width: 100%;
+}
+
+.boas-vindas {
+    position: absolute;
+    top: 150px;
+    font-family: "Moul", serif;
+    font-weight: 700;
+    font-size: 37px;
+    color: #FAF2E1;
+    text-align: center;
+    text-shadow:
+    -2px -2px 2px #52362B,
+    2px 2px 2px #52362B,
+    -2px -2px 2px #52362B,
+    2px 2px 2px #52362B;
+}
+
+.boas-vindas::after {
+    content: '`';
+    position: absolute;
+    top: -3px;
+    right: 50px;
+    font-size: 35px; 
+    color: #FAF2E1;
+    transform: rotate(5deg); 
+}
+
+.b-cardapio {
+    position: absolute;
+    top: 310px;
+    padding: 5px 15px;
+    font-family: "InkNutAntiqua", serif;
+    color: #ffffff;
+    background-color: #D95F3A;
+    border: none;
+    border-radius: 5px;
+}
+
+.b-cardapio:hover {
+    box-shadow: 0 0 10px #D95F3A;
+}
+
+
+
 
