@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,23 +50,79 @@
     </header>
 
     <main>
-            <img class="fundo" src="./images/icons/fundo.png" alt="background">
+            <img class="fundo" src="./images/general/fundo.png" alt="background">
             <h1 class="boas-vindas">Bem vindo a<br>Linha do Tempo</h1>
 
             <button class="b-cardapio">Cardápio</button>
 
+            <h2 class="titulo-carrossel">Pratos da Casa</h2>
+
+            <div class="carrossel ativado">
+                <img class="comida-carrossel ativo" src="./images/general/batata.jpg" alt="batata-frita">
+                <h3 class="info-comida" id="batata">Batata Frita</h3>
+                <h4 class="info-comida" id="preco-batata">R$ 10,00</h4>
+                
+                <button class="ver">Ver</button>
+            </div>
+
+            <div class="carrossel">
+                <img class="comida-carrossel" src="./images/general/sla.jpg" alt=sla">
+                <h3 class="info-comida" id="sla">Não Sei</h3>
+                <h4 class="info-comida" id="preco-sla">R$ 15,00</h4>
+
+                <button class="ver">Ver</button>
+            </div>
+
+            <div class="arrow">
+                <button id="voltar"> < </button>
+                <button id="avancar"> > </button>
+            </div>
+
+    </main>
+
     <script>
+         // Menu burger
         const menuBurguer = document.querySelector('.menu-burguer');
         const menu = document.getElementById('menu');
 
-        menuBurguer.addEventListener('click', () => {
+        menuBurguer.addEventListener('click', function() {
             menu.classList.toggle('desativado');
+            this.classList.toggle('active');
         });
 
-        // animação em X do menu hamburguer
-        document.querySelector('.menu-burguer').addEventListener('click', function() {
-        this.classList.toggle('active');
-    });
+        // Carrossel reciclado de outro projeto
+        let list = document.querySelectorAll('.carrossel');
+        let next = document.getElementById('avancar');
+        let prev = document.getElementById('voltar');
+        let count = list.length;
+        let active = 0;
+
+        function nextSlide() {
+            let activeOld = document.querySelector('.ativado');
+            activeOld.classList.remove('ativado');
+
+            active = active >= count - 1 ? 0 : active + 1;
+
+            list[active].style.animation = '';
+            list[active].classList.add('ativado');
+            list[active].style.animation = 'direita 0.5s ease-in forwards';
+        }
+
+        function prevSlide() {
+            let activeOld = document.querySelector('.ativado');
+            activeOld.classList.remove('ativado');
+
+            active = active <= 0 ? count - 1 : active - 1;
+
+            list[active].style.animation = '';
+            list[active].classList.add('ativado');
+            list[active].style.animation = 'esquerda 0.5s ease-in forwards';
+        }
+
+        next.onclick = nextSlide;
+        prev.onclick = prevSlide;
+
+        setInterval(nextSlide, 5000);
     </script>
 </body>
 </html>

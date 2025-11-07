@@ -53,7 +53,7 @@ header {
 
 .menu-burguer {
     background-color: transparent;
-    border:none;
+    border: none;
     position: absolute;
     right: 5px;
     top: 7px;
@@ -232,6 +232,128 @@ main {
     box-shadow: 0 0 10px #D95F3A;
 }
 
+.titulo-carrossel {
+    position: absolute;
+    top: 370px;
+    font-family: "InkNutAntiqua", serif;
+    color: #1F1106;
+    font-weight: 300;
+}
 
+.carrossel {
+    display: none;
+    position: absolute;
+    top: 400px;
+    width: 90%;
+    height: 200px;
+    background-color: #F2D5B3;
+    border-radius: 10px;
+    margin-top: 50px;
+    border: #D3B38C 3px solid;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.29);
+}
+
+@keyframes direita {
+    from {
+        left: 100%;
+        opacity: 0;
+    }
+    to {
+        left: 4%;
+        opacity: 1;
+    }
+}
+
+@keyframes esquerda {
+    from {
+        left: -100%;
+        opacity: 0;
+    }
+    to {
+        left: 4%;
+        opacity: 1;
+    }
+}
+
+.carrossel.ativado {
+    display: block;
+    animation: direita 0.5s ease-in forwards;
+}
+
+#voltar, #avancar {
+    position: absolute;
+    top: 101%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    color: #52362B; 
+    font-size: x-large;
+    font-family: monospace;
+    z-index: 4;
+    border-radius: 50%;
+    transition: 0.5s;
+    background-color: transparent;
+}
+
+#voltar {
+    left: 30px;
+}
+#voltar:hover{
+    text-shadow: 0 0 10px #52362B;
+}
+
+#avancar {
+    right: 30px;
+}
+#avancar:hover{
+    text-shadow: 0 0 50px #52362B;
+}
+
+.comida-carrossel {
+    position: absolute;
+    top: 50px;
+    margin-left: 20px;
+    width: 50%;
+    height: 50%;
+    border-radius: 10px;
+    border: #D3B38C 3px solid;
+}
+
+.info-comida {
+    position: absolute;
+    top: 10px;
+    left: 200px;
+    font-family: "InkNutAntiqua", serif;
+    color: #1F1106;
+    font-weight: 500;
+}
+
+#batata {
+    position: absolute;
+    top: 20px;
+}
+
+#preco-batata {
+    position: absolute;
+    top: 50px;
+}
+
+.ver {
+    position: absolute;
+    bottom: 50px;
+    left: 200px;
+    padding: 1px 40px;
+    font-family: "InkNutAntiqua", serif;
+    color: #ffffff;
+    background-color: #D95F3A;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.ver:hover {
+    box-shadow: 0 0 10px #D95F3A;
+}
 
 
