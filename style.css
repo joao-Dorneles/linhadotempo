@@ -329,12 +329,12 @@ main {
     font-weight: 500;
 }
 
-#batata {
+#batata, #sla {
     position: absolute;
     top: 20px;
 }
 
-#preco-batata {
+#preco-batata, #preco-sla {
     position: absolute;
     top: 50px;
 }
@@ -355,5 +355,74 @@ main {
 .ver:hover {
     box-shadow: 0 0 10px #D95F3A;
 }
+
+.sobre-nos {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 750px;
+    width: 80%;
+}
+
+.titulo-sobre-nos {
+    font-family: "InkNutAntiqua", serif;
+    color: #1F1106;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 67px;
+    line-height: 1.50;
+}
+
+.subtitulo-sobre-nos {
+    font-family: "InkNutAntiqua", serif;
+    color: #1F1106;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.texto-sobre-nos {
+    font-family: "InkNutAntiqua", serif;
+    color: #1F1106;
+    font-weight: 300;
+    line-height: 1.50;
+}
+
+.topicos {
+    width: 375px;
+    height: 300px;
+    margin-bottom: 10px;
+}
+
+#topico1 {
+    box-shadow: inset 0 -7px 0 0 #52362B;
+}
+
+#primeiros-dias {
+    margin-left: 20px;
+}
+
+#paragrafo1{
+    margin-left: 20px;
+}
+
+#logo-sobre-nos {
+    width: 150px;
+    position: absolute;
+    top: 260px;
+    left: 115px;
+}
+
+#topico2 {
+    box-shadow: inset 0 7px 0 0 #D95F3A;
+    margin-top: 150px;
+}
+
+#meses-depois, #paragrafo2 {
+    margin-left: 20px;
+}
+
+
+
 
 

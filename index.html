@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> <!-- pack do animation on scroll -->
     
 </head>
 <body>
@@ -55,9 +56,9 @@
 
             <button class="b-cardapio">Cardápio</button>
 
-            <h2 class="titulo-carrossel">Pratos da Casa</h2>
+            <h2 data-aos="fade-up" class="titulo-carrossel">Pratos da Casa</h2>
 
-            <div class="carrossel ativado">
+            <div data-aos="fade-left" class="carrossel ativado">
                 <img class="comida-carrossel ativo" src="./images/general/batata.jpg" alt="batata-frita">
                 <h3 class="info-comida" id="batata">Batata Frita</h3>
                 <h4 class="info-comida" id="preco-batata">R$ 10,00</h4>
@@ -65,7 +66,7 @@
                 <button class="ver">Ver</button>
             </div>
 
-            <div class="carrossel">
+            <div data-aos="fade-left" class="carrossel">
                 <img class="comida-carrossel" src="./images/general/sla.jpg" alt=sla">
                 <h3 class="info-comida" id="sla">Não Sei</h3>
                 <h4 class="info-comida" id="preco-sla">R$ 15,00</h4>
@@ -74,11 +75,35 @@
             </div>
 
             <div class="arrow">
-                <button id="voltar"> < </button>
-                <button id="avancar"> > </button>
+                <button data-aos="fade-up-right" id="voltar"> < </button>
+                <button data-aos="fade-up-left" id="avancar"> > </button>
             </div>
-
     </main>
+
+    <section class="sobre-nos">
+        <h2 data-aos="fade-up" class="titulo-sobre-nos">Nossa Linha do Tempo</h2>
+        <div class="topicos" id="topico1">
+            
+            <h3 data-aos="zoom-in"class="subtitulo-sobre-nos" id="primeiros-dias">Primeiros Dias</h3>
+            <p data-aos="fade-right" class="texto-sobre-nos" id="paragrafo1">Em um encontro de amigos entre os sócios, foi colocada em questão a possibilidade de 
+            formar uma empresa.</p>
+
+            <img src="./images/general/logoNOBG.png" alt="logo" id="logo-sobre-nos">
+
+        <div class="topicos" id="topico2">
+
+            <h3 data-aos="zoom-in"class="subtitulo-sobre-nos" id="meses-depois">Alguns Meses Mais Tarde</h3>
+            <p data-aos="fade-right" class="texto-sobre-nos" id="paragrafo2">Em um encontro de amigos entre os sócios, foi colocada em questão a possibilidade de
+            formar uma empresa.</p>
+
+            <img src="./images/general/logoNOBG.png" alt="logo" id="logo-sobre-nos">
+        </div>
+
+
+
+
+
+
 
     <script>
          // Menu burger
@@ -122,7 +147,12 @@
         next.onclick = nextSlide;
         prev.onclick = prevSlide;
 
-        setInterval(nextSlide, 5000);
+    </script>
+
+    <!-- inicialização do animation on scroll -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
     </script>
 </body>
 </html>
