@@ -30,7 +30,7 @@ header {
     align-items: center;
     background-color: #F2D5B3;
     height: 100px;
-    width: 100dvh;
+    width: 100%;
     padding-top: 20px;
     box-shadow: inset 0 15px 0 0 #52362B;
 }
@@ -414,15 +414,213 @@ main {
 }
 
 #topico2 {
-    box-shadow: inset 0 7px 0 0 #D95F3A;
+    box-shadow: inset 0 7px 0 0 #D95F3A,
+    inset 0 -7px 0 0 #D95F3A;
     margin-top: 150px;
+    height: 330px;
 }
 
 #meses-depois, #paragrafo2 {
+    margin-right: 20px;
+}
+
+.direita {
+    text-align: right;
+}
+
+#personagens-sobre-nos {
+    width: 150px;
+    position: absolute;
+    top: 570px;
+    right: 35px;
+}
+
+#localizacao, #paragrafo3 {
     margin-left: 20px;
 }
 
+#localizacao-sobre-nos {
+    width: 250px;
+    position: absolute;
+    top: 170px;
+    right: 60px;
+    border-radius: 50px;
+}
 
+#topico3 {
+    box-shadow: inset 0 7px 0 0 #52362B,
+    inset 0 -7px 0 0 #52362B;
+    margin-top: -13px;
+    height: 360px;
 
+}
 
+#nosso-espaco, #paragrafo4 {
+    margin-right: 20px;
+}
 
+#nosso-espaco-sobre-nos {
+    width: 250px;
+    position: absolute;
+    top: 250px;
+    left: 60px;
+    border-radius: 50px;
+}
+
+#topico4 {
+    box-shadow: inset 0 7px 0 0 #D95F3A,
+    inset 0 -7px 0 0 #D95F3A;
+    margin-top: -13px;
+    height: 440px;
+}
+
+.contato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 2314px;
+    width: 100%;
+    box-shadow: inset 0 7px 0 0 #52362B,
+    inset 0 -7px 0 0 #52362B;
+    height: 300px;
+}
+
+.fale-conosco {
+    font-family: "InkNutAntiqua", serif;
+    color: #1F1106;
+    font-weight: 300;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.texto-whatsapp {
+    font-family: "InkNutAntiqua", serif;
+    color: #1F1106;
+    font-weight: 300;
+    text-align: center;
+    margin-top: -10px;
+    position: absolute;
+    top: 80px;
+}
+
+.link-whatsapp {
+    font-family: "InkNutAntiqua", serif;
+    color: #1F1106;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 25px;
+    text-decoration: none;
+}
+
+.link-whatsapp:hover {
+    text-decoration: underline;
+}
+
+#whatsapp-icon {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.redes-icon {
+    width: 40px;
+}
+
+.redes-container {
+    display: flex;
+    justify-content: center;
+    margin-left: 35px;
+}
+
+.rodape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D95F3A;
+    height: 1700px;
+    width: 100%;
+    position: absolute;
+    top: 2614px;
+}
+
+.texto-footer {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FAF2E1;
+    font-weight: 300;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.icons-footer {
+    display: flex;
+    justify-content: center;
+    margin-left: 30px;
+}
+
+.redes-icon-footer {
+    width: 30px;
+}
+
+.mapa-site-lista {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.equipe {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nomes-ti {
+    display: flex;
+    justify-content: center;
+    margin-right: 30px;
+    flex-direction: column;
+}
+
+.nomes-adm {
+    display: flex;
+    justify-content: center;
+    margin-right: 30px;
+    flex-direction: column;
+}
+
+.logo-rodape {
+    width: 150px;
+    margin-top: 20px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EF9849;
+    height: 20px;
+    width: 100%;
+    margin-top: 20px;
+    position: absolute;
+    top: 4300px;
+    margin: 0;
+    padding: 0;
+}
+
+.container-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#copyright {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
