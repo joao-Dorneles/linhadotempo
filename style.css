@@ -11,10 +11,12 @@ html, body{
 
 body {
     display: flex;
-    height: 100dvh;
+    min-height: 100vh;
     background-color:#F2D5B3;
     flex-direction: column;
-
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 @font-face {
@@ -241,7 +243,7 @@ main {
 }
 
 .carrossel {
-    display: none;
+    display: block;
     position: absolute;
     top: 400px;
     width: 90%;
@@ -278,6 +280,33 @@ main {
 .carrossel.ativado {
     display: block;
     animation: direita 0.5s ease-in forwards;
+}
+
+.indicadores {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+    pointer-events: auto;
+}
+
+.indicador {
+    width: 1px;
+    height: 1px;
+    background-color: rgba(82,54,43,0.45);
+    border: 2px solid rgba(255,255,255,0.08);
+    cursor: pointer;
+    transition: transform .22s ease, background-color .22s ease, opacity .22s ease;
+    opacity: 0.7;
+}
+
+.indicador.ativo {
+    background-color: #D95F3A;
+    transform: scale(1.25);
+    opacity: 1;
 }
 
 #voltar, #avancar {
