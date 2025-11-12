@@ -1,4 +1,5 @@
-html, body{
+html,
+body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -12,7 +13,7 @@ html, body{
 body {
     display: flex;
     min-height: 100vh;
-    background-color:#F2D5B3;
+    background-color: #F2D5B3;
     flex-direction: column;
     width: 100%;
     max-width: 100vw;
@@ -22,7 +23,7 @@ body {
 @font-face {
     font-family: "InkNutAntiqua";
     src: url(./fonts/InknutAntiqua-Regular.woff2) format("woff2"),
-    url(./fonts/InknutAntiqua-Regular.woff) format("woff");
+        url(./fonts/InknutAntiqua-Regular.woff) format("woff");
     font-weight: normal;
     font-style: normal;
 }
@@ -46,11 +47,16 @@ header {
 .buscar {
     padding: 5px;
     border-radius: 100px;
-    border: 1px solid #ffffff;
+    border: 2px solid #ffffff;
     height: 15px;
     width: 150px;
     margin-left: 10px;
+    transition: 0.5s;
+}
 
+.buscar:focus {
+    outline: none;
+    border: 2px solid #D3B38C;
 }
 
 .menu-burguer {
@@ -80,7 +86,7 @@ header {
     transform: translateY(-4px) rotate(-40deg);
 }
 
-.nav-bar{
+.nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -119,6 +125,7 @@ header {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -130,6 +137,7 @@ header {
         opacity: 1;
         transform: translateY(0);
     }
+
     100% {
         opacity: 0;
         transform: translateY(-10px);
@@ -203,10 +211,10 @@ main {
     color: #FAF2E1;
     text-align: center;
     text-shadow:
-    -2px -2px 2px #52362B,
-    2px 2px 2px #52362B,
-    -2px -2px 2px #52362B,
-    2px 2px 2px #52362B;
+        -2px -2px 2px #52362B,
+        2px 2px 2px #52362B,
+        -2px -2px 2px #52362B,
+        2px 2px 2px #52362B;
 }
 
 .boas-vindas::after {
@@ -214,9 +222,9 @@ main {
     position: absolute;
     top: -3px;
     right: 50px;
-    font-size: 35px; 
+    font-size: 35px;
     color: #FAF2E1;
-    transform: rotate(5deg); 
+    transform: rotate(5deg);
 }
 
 .b-cardapio {
@@ -243,145 +251,124 @@ main {
 }
 
 .carrossel {
-    display: block;
+    width: 350px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     position: absolute;
-    top: 400px;
-    width: 90%;
+    top: 460px;
+    border: #D3B38C 2px solid;
+}
+
+.faixa {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.cartao {
+    min-width: 100%;
     height: 200px;
-    background-color: #F2D5B3;
-    border-radius: 10px;
-    margin-top: 50px;
-    border: #D3B38C 3px solid;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.29);
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: #F2D5B3;
 }
 
-@keyframes direita {
-    from {
-        left: 100%;
-        opacity: 0;
-    }
-    to {
-        left: 4%;
-        opacity: 1;
-    }
+
+.botoes {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    transform: translateY(-50%);
+    padding: 0 10px;
 }
 
-@keyframes esquerda {
-    from {
-        left: -100%;
-        opacity: 0;
-    }
-    to {
-        left: 4%;
-        opacity: 1;
-    }
+.botoes-carrossel {
+    background-color: transparent;
+    border: none;
+    color: #1F1106;
+    font-size: 24px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.carrossel.ativado {
-    display: block;
-    animation: direita 0.5s ease-in forwards;
+#avancar {
+    margin-right: 20px;
 }
 
 .indicadores {
-    position: absolute;
-    bottom: -28px;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
-    gap: 10px;
-    z-index: 20;
-    pointer-events: auto;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 0;
+
 }
 
 .indicador {
-    width: 1px;
-    height: 1px;
-    background-color: rgba(82,54,43,0.45);
-    border: 2px solid rgba(255,255,255,0.08);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
     cursor: pointer;
-    transition: transform .22s ease, background-color .22s ease, opacity .22s ease;
-    opacity: 0.7;
+    transition: background-color 0.3s;
+    background-color: #52362b5e;
 }
 
 .indicador.ativo {
     background-color: #D95F3A;
-    transform: scale(1.25);
-    opacity: 1;
 }
 
-#voltar, #avancar {
-    position: absolute;
-    top: 101%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    border: none;
-    color: #52362B; 
-    font-size: x-large;
-    font-family: monospace;
-    z-index: 4;
-    border-radius: 50%;
-    transition: 0.5s;
-    background-color: transparent;
-}
-
-#voltar {
-    left: 30px;
-}
-#voltar:hover{
-    text-shadow: 0 0 10px #52362B;
-}
-
-#avancar {
-    right: 30px;
-}
-#avancar:hover{
-    text-shadow: 0 0 50px #52362B;
-}
-
-.comida-carrossel {
-    position: absolute;
-    top: 50px;
-    margin-left: 20px;
-    width: 50%;
-    height: 50%;
+.img-carrossel {
+    width: 170px;
     border-radius: 10px;
-    border: #D3B38C 3px solid;
+    margin-left: 20px;
+    border: #D3B38C 2px solid;
 }
 
-.info-comida {
-    position: absolute;
-    top: 10px;
-    left: 200px;
+.infos-prato {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.nome-prato {
     font-family: "InkNutAntiqua", serif;
     color: #1F1106;
-    font-weight: 500;
+    font-weight: 300;
+    margin-left: 20px;
+    margin-top: 40px;
+    line-height: 40px;
+    font-size: 20px;
 }
 
-#batata, #sla {
-    position: absolute;
-    top: 20px;
-}
-
-#preco-batata, #preco-sla {
-    position: absolute;
-    top: 50px;
-}
-
-.ver {
-    position: absolute;
-    bottom: 50px;
-    left: 200px;
-    padding: 1px 40px;
+.preco-prato {
     font-family: "InkNutAntiqua", serif;
-    color: #ffffff;
+    color: #1F1106;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.botao-ver {
+    font-family: "InkNutAntiqua", serif;
+    color: #FAF2E1;
     background-color: #D95F3A;
     border: none;
     border-radius: 5px;
-    font-size: 12px;
+    padding: 2px 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+    margin-left: 20px;
+    margin-bottom: 45px;
 }
 
-.ver:hover {
+.botao-ver:hover {
     box-shadow: 0 0 10px #D95F3A;
 }
 
@@ -431,7 +418,7 @@ main {
     margin-left: 20px;
 }
 
-#paragrafo1{
+#paragrafo1 {
     margin-left: 20px;
 }
 
@@ -444,12 +431,13 @@ main {
 
 #topico2 {
     box-shadow: inset 0 7px 0 0 #D95F3A,
-    inset 0 -7px 0 0 #D95F3A;
+        inset 0 -7px 0 0 #D95F3A;
     margin-top: 150px;
     height: 330px;
 }
 
-#meses-depois, #paragrafo2 {
+#meses-depois,
+#paragrafo2 {
     margin-right: 20px;
 }
 
@@ -464,7 +452,8 @@ main {
     right: 35px;
 }
 
-#localizacao, #paragrafo3 {
+#localizacao,
+#paragrafo3 {
     margin-left: 20px;
 }
 
@@ -478,13 +467,14 @@ main {
 
 #topico3 {
     box-shadow: inset 0 7px 0 0 #52362B,
-    inset 0 -7px 0 0 #52362B;
+        inset 0 -7px 0 0 #52362B;
     margin-top: -13px;
     height: 360px;
 
 }
 
-#nosso-espaco, #paragrafo4 {
+#nosso-espaco,
+#paragrafo4 {
     margin-right: 20px;
 }
 
@@ -498,7 +488,7 @@ main {
 
 #topico4 {
     box-shadow: inset 0 7px 0 0 #D95F3A,
-    inset 0 -7px 0 0 #D95F3A;
+        inset 0 -7px 0 0 #D95F3A;
     margin-top: -13px;
     height: 440px;
 }
@@ -511,7 +501,7 @@ main {
     top: 2314px;
     width: 100%;
     box-shadow: inset 0 7px 0 0 #52362B,
-    inset 0 -7px 0 0 #52362B;
+        inset 0 -7px 0 0 #52362B;
     height: 300px;
 }
 
@@ -531,6 +521,13 @@ main {
     margin-top: -10px;
     position: absolute;
     top: 80px;
+}
+
+.siga-nos {
+    font-family: "InkNutAntiqua", serif;
+    color: #1F1106;
+    margin-bottom: 10px;
+    font-weight: 300;
 }
 
 .link-whatsapp {

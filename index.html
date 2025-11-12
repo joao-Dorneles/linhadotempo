@@ -60,31 +60,42 @@
 
         <button class="b-cardapio">Cardápio</button>
 
+        <!-- carrossel -->
+
         <h2 data-aos="fade-up" class="titulo-carrossel">Pratos da Casa</h2>
 
-        <div data-aos="fade-left" class="carrossel ativado">
-            <img class="comida-carrossel ativo" src="./images/general/batata.jpg" alt="batata-frita">
-            <h3 class="info-comida" id="batata">Batata Frita</h3>
-            <h4 class="info-comida" id="preco-batata">R$ 10,00</h4>
+        <div class="carrossel">
+            <div class="faixa" id="faixa">
+                <!-- clones -->
+                <div class="cartao cartao1">
+                    <img class="img-carrossel" src="./images/general/image-not-found.jpeg" alt="alimento1">
 
-            <button class="ver">Ver</button>
-        </div>
+                    <div class="infos-pratos">
+                        <p class="nome-prato">Prato 1<br><span class="preco-prato">R$29,99</span></p>
 
-        <div data-aos="fade-left" class="carrossel">
-            <img class="comida-carrossel" src="./images/general/sla.jpg" alt="sla">
-            <h3 class="info-comida" id="sla">Não Sei</h3>
-            <h4 class="info-comida" id="preco-sla">R$ 15,00</h4>
+                        <button class="botao-ver">Ver</button>
+                    </div>
+                </div>
+                <div class="cartao cartao2">
+                    <img class="img-carrossel" src="./images/general/image-not-found.jpeg" alt="alimento2">
 
-            <button class="ver">Ver</button>
-        </div>
+                    <div class="infos-pratos">
+                        <p class="nome-prato">Prato 2<br><span class="preco-prato">R$39,99</span></p>
 
-        <div class="indicadores" id="indicadores"></div>
+                        <button class="botao-ver">Ver</button>
+                    </div>
+                </div>
+            </div>
 
-        <div class="arrow">
-            <button data-aos="fade-up-right" id="voltar">
-                < </button>
-                    <button data-aos="fade-up-left" id="avancar"> > </button>
-        </div>
+            <div class="botoes">
+                <button class="botoes-carrossel" id="voltar">&#10094;</button>
+                <button class="botoes-carrossel" id="avancar">&#10095;</button>
+            </div>
+
+            <div class="indicadores" id="indicadores">
+                <div class="indicador ativo" data-slide="0"></div>
+                <div class="indicador" data-slide="1"></div>
+            </div>
     </main>
 
     <section class="sobre-nos">
@@ -121,8 +132,8 @@
 
             <div data-aos="zoom-in" class="topicos" id="topico4">
 
-                <h3 data-aos="zoom-in" class="subtitulo-sobre-nos direita" id="nosso-espaco">O Nosso Espaço</h3>
-                <p data-aos="fade-left" class="texto-sobre-nos direita" id="paragrafo4">Nosso espaço será decorado no
+                <h3 class="subtitulo-sobre-nos direita" id="nosso-espaco">O Nosso Espaço</h3>
+                <p class="texto-sobre-nos direita" id="paragrafo4">Nosso espaço será decorado no
                     intuito de fazer os clientes
                     ingressarem em suas melhores lembranças do passado, incluindo música de fundo.
                     Além disso terá espaço Kids para entreter as crianças pequenas.
@@ -205,110 +216,84 @@
         <img class="logo-rodape" src="./images/general/logoNOBG.png" alt="logo-rodape">
     </section>
 
-    <footer data-aos="fade-up">
+    <footer>
         <div class="container-footer">
-            <p data-aos="fade-up" class="texto-footer" id="copyright">&copy; 2023 Linha do Tempo. Todos os direitos
+            <p class="texto-footer" id="copyright">&copy; 2023 Linha do Tempo. Todos os direitos
                 reservados.</p>
         </div>
     </footer>
 
     <script>
-        (function () {
-            // menu burger (mantém igual)
-            const menuBurguer = document.querySelector('.menu-burguer');
-            const menu = document.getElementById('menu');
-            if (menuBurguer) menuBurguer.addEventListener('click', function () {
-                menu.classList.toggle('desativado');
-                this.classList.toggle('active');
+        // menu burger (mantém igual)
+        const menuBurguer = document.querySelector('.menu-burguer');
+        const menu = document.getElementById('menu');
+        if (menuBurguer) menuBurguer.addEventListener('click', function () {
+            menu.classList.toggle('desativado');
+            this.classList.toggle('active');
+        });
+
+        //carrossel (feito com auxilio de I.A)
+        const faixa = document.getElementById('faixa');
+        const avancar = document.getElementById('avancar');
+        const voltar = document.getElementById('voltar');
+        const indicadores = document.querySelectorAll('.indicador');
+        const total = indicadores.length;
+
+        let indice = 0;
+
+        function pegarLargura() {
+            const carrossel = document.querySelector('.carrossel');
+            return carrossel.clientWidth;
+        }
+
+        function atualizar(animate = true) {
+            const largura = pegarLargura();
+            if (!animate) {
+
+                const antiga = faixa.style.transition;
+                faixa.style.transition = 'none';
+                faixa.style.transform = `translateX(-${indice * largura}px)`;
+
+                requestAnimationFrame(() => {
+                    faixa.style.transition = antiga || 'transform 0.5s ease';
+                });
+            } else {
+                faixa.style.transform = `translateX(-${indice * largura}px)`;
+            }
+
+            indicadores.forEach((indicador, i) => {
+                indicador.classList.toggle('ativo', i === indice);
             });
+        }
 
-            // carrossel essencial
-            const slides = Array.from(document.querySelectorAll('.carrossel'));
-            const nextBtn = document.getElementById('avancar');
-            const prevBtn = document.getElementById('voltar');
-            const contDots = document.getElementById('indicadores');
-            if (!slides.length) return;
+        avancar.addEventListener('click', () => {
+            if (indice < total - 1) {
+                indice++;
+                atualizar(true);
+            }
+        });
 
-            const DURA = 600; // ms - ajuste se mudar CSS transition
-            let active = slides.findIndex(s => s.classList.contains('ativado'));
-            if (active === -1) active = 0;
-            let animando = false;
+        voltar.addEventListener('click', () => {
+            if (indice > 0) {
+                indice--;
+                atualizar(true);
+            }
+        });
 
-            // prepare slides (use GPU transform)
-            slides.forEach((s, i) => {
-                s.style.transition = `transform ${DURA}ms cubic-bezier(.25,.46,.45,.94), opacity ${DURA}ms`;
-                s.style.position = s.style.position || 'absolute';
-                s.style.left = s.style.left || getComputedStyle(s).left || '4%';
-                s.style.transform = (i === active) ? 'translateX(0)' : 'translateX(100%)';
-                s.style.opacity = (i === active) ? '1' : '0';
-                s.style.pointerEvents = (i === active) ? 'auto' : 'none';
+        indicadores.forEach((indicador) => {
+            indicador.addEventListener('click', () => {
+                indice = parseInt(indicador.dataset.slide);
+                atualizar(true);
             });
+        });
 
-            // create dots
-            contDots.innerHTML = '';
-            slides.forEach((_, i) => {
-                const btn = document.createElement('button');
-                btn.className = 'indicador' + (i === active ? ' ativo' : '');
-                btn.type = 'button';
-                btn.dataset.index = i;
-                btn.addEventListener('click', () => goTo(i));
-                contDots.appendChild(btn);
-            });
+        window.addEventListener('resize', () => {
+            atualizar(false);
+        });
 
-            function atualizarDots() {
-                const dots = Array.from(contDots.children);
-                dots.forEach((d, i) => d.classList.toggle('ativo', i === active));
-            }
-
-            function goTo(nextIndex) {
-                if (animando || nextIndex === active) return;
-                animando = true;
-                const old = slides[active];
-                const neu = slides[nextIndex];
-                // calcula direção corretamente mesmo com wrap
-                const nextIsForward = nextIndex === (active + 1) % slides.length;
-                const nextIsBackward = nextIndex === (active - 1 + slides.length) % slides.length;
-                let dir;
-                if (nextIsForward) dir = 'next';
-                else if (nextIsBackward) dir = 'prev';
-                else dir = nextIndex > active ? 'next' : 'prev'; // fallback para saltos maiores
+        atualizar(false);
 
 
-                // prepare new off-screen
-                neu.style.transition = 'none';
-                neu.style.transform = (dir === 'next') ? 'translateX(100%)' : 'translateX(-100%)';
-                neu.style.opacity = '0';
-                neu.style.pointerEvents = 'none';
-                // force reflow
-                void neu.offsetWidth;
-                // animate both
-                old.style.transform = (dir === 'next') ? 'translateX(-100%)' : 'translateX(100%)';
-                old.style.opacity = '0';
-                old.style.pointerEvents = 'none';
-
-                neu.style.transition = `transform ${DURA}ms cubic-bezier(.25,.46,.45,.94), opacity ${DURA}ms`;
-                neu.style.transform = 'translateX(0)';
-                neu.style.opacity = '1';
-                neu.style.pointerEvents = 'auto';
-
-                // cleanup after animation
-                setTimeout(() => {
-                    active = nextIndex;
-                    atualizarDots();
-                    animando = false;
-                }, DURA);
-            }
-
-            function next() {
-                goTo(active >= slides.length - 1 ? 0 : active + 1);
-            }
-            function prev() {
-                goTo(active <= 0 ? slides.length - 1 : active - 1);
-            }
-
-            if (nextBtn) nextBtn.addEventListener('click', next);
-            if (prevBtn) prevBtn.addEventListener('click', prev);
-        })();
 
     </script>
 
