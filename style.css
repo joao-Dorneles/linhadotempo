@@ -17,7 +17,6 @@ body {
     flex-direction: column;
     width: 100%;
     max-width: 100vw;
-    overflow-x: hidden;
 }
 
 @font-face {
@@ -40,8 +39,6 @@ header {
 
 .logo {
     width: 100px;
-    position: absolute;
-    top: 15px;
 }
 
 .buscar {
@@ -62,9 +59,8 @@ header {
 .menu-burguer {
     background-color: transparent;
     border: none;
-    position: absolute;
-    right: 5px;
-    top: 7px;
+    margin-right: 3%;
+    margin-top: 3px;
     transition: 0.5s;
 }
 
@@ -460,8 +456,8 @@ main {
 #localizacao-sobre-nos {
     width: 250px;
     position: absolute;
-    top: 170px;
-    right: 60px;
+    top: 920px;
+    left: 60px;
     border-radius: 50px;
 }
 
@@ -481,7 +477,7 @@ main {
 #nosso-espaco-sobre-nos {
     width: 250px;
     position: absolute;
-    top: 250px;
+    top: 1350px;
     left: 60px;
     border-radius: 50px;
 }
