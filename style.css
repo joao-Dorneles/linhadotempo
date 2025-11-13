@@ -161,6 +161,10 @@ a:hover {
     text-decoration: underline;
 }
 
+ul {
+    text-align: center;
+}
+
 .jogos {
     position: absolute;
     right: 10px;
@@ -405,7 +409,7 @@ main {
 }
 
 .topicos {
-    width: 375px;
+    width: 100vw;
     height: 300px;
     margin-bottom: 10px;
 }
@@ -649,4 +653,113 @@ footer {
     font-size: 12px;
     margin: 0;
     padding: 0;
+}
+
+@media (min-width: 360px) {
+    .carrossel {
+        width: 330px
+    }
+
+    .jogos {
+        right: 5px;
+    }
+
+    .nav-bar {
+        left: 90px;
+    }
+
+    .b-cardapio {
+        top: 300px;
+    }
+
+    .boas-vindas {
+        top: 140px;
+    }
+}
+
+@media (min-width: 390px) {
+    .nav-bar {
+        width: 220px;
+        height: 45px;
+        left: 105px;
+    }
+
+    .jogos {
+        width: 45px;
+        height: 45px;
+        right: 10px;
+        top: 45px;
+    }
+
+    .logo {
+        width: 110px;
+    }
+
+    #controle-video-game {
+        right: 7.2px;
+        top: 7px;
+        width: 30px;
+    }
+
+    .link-menu {
+        right: 40px;
+        width: 170px;
+        height: 210px;
+    }
+
+    a {
+        font-size: 20px;
+    }
+
+    #logo-sobre-nos {
+        left: 120px;
+    }
+
+    #localizacao-sobre-nos,
+    #nosso-espaco-sobre-nos {
+        left: 70px;
+    }
+
+    .contato {
+        height: 330px;
+    }
+
+    .rodape {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #D95F3A;
+        height: 1700px;
+        width: 100%;
+        position: absolute;
+        top: 2643px;
+    }
+
+    footer {
+        position: absolute;
+        top: 4329px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
