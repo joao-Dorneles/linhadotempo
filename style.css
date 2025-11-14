@@ -776,6 +776,18 @@ footer {
     }
 }
 
+@media (min-width: 405px) {
+
+    .b-cardapio {
+        top: 315px;
+    }
+
+    #logo-sobre-nos {
+        left: 125px;
+    }
+
+}
+
 @media (min-width: 412px) {
     .nav-bar {
         width: 240px;
@@ -865,7 +877,7 @@ footer {
 
     .img-carrossel {
         width: 220px;
-    } 
+    }
 
     #personagens-sobre-nos {
         right: 12%;
