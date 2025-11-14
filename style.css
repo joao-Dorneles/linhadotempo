@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 /* * {
@@ -437,7 +438,7 @@ main {
     box-shadow: inset 0 7px 0 0 #D95F3A,
         inset 0 -7px 0 0 #D95F3A;
     margin-top: 150px;
-    height: 330px;
+    height: 380px;
 }
 
 #meses-depois,
@@ -452,8 +453,8 @@ main {
 #personagens-sobre-nos {
     width: 150px;
     position: absolute;
-    top: 570px;
-    right: 35px;
+    top: 610px;
+    right: 11%;
 }
 
 #localizacao,
@@ -464,8 +465,8 @@ main {
 #localizacao-sobre-nos {
     width: 250px;
     position: absolute;
-    top: 920px;
-    left: 60px;
+    top: 950px;
+    left: 21%;
     border-radius: 50px;
 }
 
@@ -485,8 +486,8 @@ main {
 #nosso-espaco-sobre-nos {
     width: 250px;
     position: absolute;
-    top: 1350px;
-    left: 60px;
+    top: 1390px;
+    left: 21%;
     border-radius: 50px;
 }
 
@@ -502,7 +503,7 @@ main {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 2314px;
+    top: 2338px;
     width: 100%;
     box-shadow: inset 0 7px 0 0 #52362B,
         inset 0 -7px 0 0 #52362B;
@@ -571,7 +572,7 @@ main {
     height: 1700px;
     width: 100%;
     position: absolute;
-    top: 2614px;
+    top: 2638px;
 }
 
 .texto-footer {
@@ -636,7 +637,7 @@ footer {
     width: 100%;
     margin-top: 20px;
     position: absolute;
-    top: 4300px;
+    top: 4318px;
     margin: 0;
     padding: 0;
 }
@@ -674,6 +675,22 @@ footer {
 
     .boas-vindas {
         top: 140px;
+    }
+
+    #logo-sobre-nos {
+        left: 40%;
+    }
+
+    #localizacao-sobre-nos {
+        top: 965px;
+    }
+
+    #nosso-espaco-sobre-nos {
+        top: 1410px;
+    }
+
+    #personagens-sobre-nos {
+        right: 5%;
     }
 }
 
@@ -715,6 +732,10 @@ footer {
         left: 120px;
     }
 
+    #personagens-sobre-nos {
+        right: 10%;
+    }
+
     #localizacao-sobre-nos,
     #nosso-espaco-sobre-nos {
         left: 70px;
@@ -732,34 +753,131 @@ footer {
         height: 1700px;
         width: 100%;
         position: absolute;
-        top: 2643px;
+        top: 2668px;
     }
 
     footer {
         position: absolute;
-        top: 4329px;
+        top: 4347px;
+    }
+}
+
+@media (min-width: 400px) {
+    #personagens-sobre-nos {
+        right: 11%;
     }
 
+    #localizacao-sobre-nos {
+        left: 80px;
+    }
 
+    #nosso-espaco-sobre-nos {
+        left: 80px;
+    }
+}
 
+@media (min-width: 412px) {
+    .nav-bar {
+        width: 240px;
+    }
 
+    .buscar {
+        width: 180px;
+    }
 
+    .carrossel {
+        width: 380px;
+    }
 
+    .img-carrossel {
+        width: 200px;
+    }
 
+    #logo-sobre-nos {
+        left: 130px;
+    }
 
+    #personagens-sobre-nos {
+        right: 10%;
+    }
 
+}
 
+@media (min-width: 414px) {
+    .nav-bar {
+        width: 240px;
+    }
 
+    .buscar {
+        width: 170px;
+    }
 
+    .carrossel {
+        width: 380px;
+    }
 
+    #logo-sobre-nos {
+        left: 140px;
+    }
 
+    #personagens-sobre-nos {
+        right: 11%;
+    }
 
+    #localizacao-sobre-nos {
+        left: 85px;
+    }
 
+    #nosso-espaco-sobre-nos {
+        left: 85px;
+    }
+}
 
+@media (min-width: 430px) {
+    .nav-bar {
+        width: 260px;
+    }
 
+    .buscar {
+        width: 190px;
+    }
 
+    .boas-vindas {
+        font-size: 40px;
+    }
 
+    .boas-vindas::after {
+        font-size: 38px;
+    }
 
+    .b-cardapio {
+        top: 320px;
+    }
+
+    .titulo-carrossel {
+        top: 390px;
+    }
+
+    .carrossel {
+        top: 480px;
+        width: 400px;
+    }
+
+    .img-carrossel {
+        width: 220px;
+    } 
+
+    #personagens-sobre-nos {
+        right: 12%;
+    }
+
+    #localizacao-sobre-nos {
+        left: 95px;
+    }
+
+    #nosso-espaco-sobre-nos {
+        left: 95px;
+    }
 
 
 }
