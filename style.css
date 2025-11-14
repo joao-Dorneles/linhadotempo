@@ -656,6 +656,82 @@ footer {
     padding: 0;
 }
 
+@media (min-width: 344px) {
+    .nav-bar {
+        width: 190px;
+    }
+
+    .buscar {
+        width: 125px;
+    }
+
+    .jogos {
+        right: 7px;
+    }
+
+    .boas-vindas {
+        font-size: 35px;
+    }
+
+    .b-cardapio {
+        top: 290px;
+    }
+
+    .titulo-carrossel {
+        top: 330px;
+    }
+
+    .carrossel {
+        top: 420px;
+        width: 300px;
+    }
+
+    .img-carrossel {
+        width: 150px;
+    }
+
+    .sobre-nos {
+        top: 700px;
+    }
+
+    #topico2 {
+    box-shadow: inset 0 7px 0 0 #D95F3A,
+        inset 0 -7px 0 0 #D95F3A;
+    margin-top: 100px;
+    height: 380px;
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+/* } continuar aqui */
+
+
+}
+
 @media (min-width: 360px) {
     .carrossel {
         width: 330px
