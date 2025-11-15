@@ -47,7 +47,7 @@ header {
     border-radius: 100px;
     border: 2px solid #ffffff;
     height: 15px;
-    width: 150px;
+    width: 120px;
     margin-left: 10px;
     transition: 0.5s;
 }
@@ -88,7 +88,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #52362B;
-    width: 220px;
+    width: 180px;
     position: absolute;
     top: 45px;
     left: 100px;
@@ -115,6 +115,7 @@ header {
     border-radius: 10px;
     border: #F2D5B3 3px solid;
     animation: transicao 0.2s ease-in-out;
+    width: 150px;
 }
 
 @keyframes transicao {
@@ -168,7 +169,7 @@ ul {
 
 .jogos {
     position: absolute;
-    right: 10px;
+    right: 15px;
     top: 44px;
     width: 40px;
     height: 40px;
@@ -205,10 +206,10 @@ main {
 
 .boas-vindas {
     position: absolute;
-    top: 150px;
+    top: 130px;
     font-family: "Moul", serif;
     font-weight: 700;
-    font-size: 37px;
+    font-size: 35px;
     color: #FAF2E1;
     text-align: center;
     text-shadow:
@@ -223,14 +224,14 @@ main {
     position: absolute;
     top: -3px;
     right: 50px;
-    font-size: 35px;
+    font-size: 30px;
     color: #FAF2E1;
     transform: rotate(5deg);
 }
 
 .b-cardapio {
     position: absolute;
-    top: 310px;
+    top: 290px;
     padding: 5px 15px;
     font-family: "InkNutAntiqua", serif;
     color: #ffffff;
@@ -246,14 +247,14 @@ main {
 
 .titulo-carrossel {
     position: absolute;
-    top: 370px;
+    top: 350px;
     font-family: "InkNutAntiqua", serif;
     color: #1F1106;
     font-weight: 300;
 }
 
 .carrossel {
-    width: 350px;
+    width: 310px;
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -326,7 +327,7 @@ main {
 }
 
 .img-carrossel {
-    width: 170px;
+    width: 150px;
     border-radius: 10px;
     margin-left: 20px;
     border: #D3B38C 2px solid;
@@ -393,6 +394,7 @@ main {
     margin-bottom: 20px;
     margin-left: 67px;
     line-height: 1.50;
+    margin-top: 0;
 }
 
 .subtitulo-sobre-nos {
@@ -410,40 +412,42 @@ main {
 }
 
 .topicos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
     width: 100vw;
-    height: 300px;
-    margin-bottom: 10px;
 }
 
 #topico1 {
     box-shadow: inset 0 -7px 0 0 #52362B;
-}
-
-#primeiros-dias {
-    margin-left: 20px;
+    height: 355px;
 }
 
 #paragrafo1 {
     margin-left: 20px;
+    text-align: justify;
+    margin-right: 20px;
 }
 
 #logo-sobre-nos {
     width: 150px;
-    position: absolute;
-    top: 260px;
-    left: 115px;
 }
 
 #topico2 {
     box-shadow: inset 0 7px 0 0 #D95F3A,
         inset 0 -7px 0 0 #D95F3A;
-    margin-top: 150px;
-    height: 380px;
+    margin-top: 5px;
+    height: 500px;
 }
 
-#meses-depois,
 #paragrafo2 {
     margin-right: 20px;
+}
+
+#paragrafo2 {
+    text-align: justify;
+    margin-left: 20px;
 }
 
 .direita {
@@ -452,50 +456,48 @@ main {
 
 #personagens-sobre-nos {
     width: 150px;
-    position: absolute;
-    top: 610px;
-    right: 11%;
 }
 
-#localizacao,
 #paragrafo3 {
     margin-left: 20px;
 }
 
+#paragrafo3 {
+    text-align: justify;
+    margin-right: 20px;
+}
+
 #localizacao-sobre-nos {
     width: 250px;
-    position: absolute;
-    top: 950px;
-    left: 21%;
     border-radius: 50px;
 }
 
 #topico3 {
     box-shadow: inset 0 7px 0 0 #52362B,
         inset 0 -7px 0 0 #52362B;
-    margin-top: -13px;
-    height: 360px;
-
+    margin-top: 5px;
+    min-height: 400px;
 }
 
-#nosso-espaco,
 #paragrafo4 {
     margin-right: 20px;
 }
 
+#paragrafo4 {
+    text-align: justify;
+    margin-left: 20px;
+}
+
 #nosso-espaco-sobre-nos {
     width: 250px;
-    position: absolute;
-    top: 1390px;
-    left: 21%;
     border-radius: 50px;
 }
 
 #topico4 {
     box-shadow: inset 0 7px 0 0 #D95F3A,
         inset 0 -7px 0 0 #D95F3A;
-    margin-top: -13px;
-    height: 440px;
+    margin-top: 5px;
+    min-height: 460px;
 }
 
 .contato {
@@ -503,7 +505,7 @@ main {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 2338px;
+    top: 2520px;
     width: 100%;
     box-shadow: inset 0 7px 0 0 #52362B,
         inset 0 -7px 0 0 #52362B;
@@ -572,7 +574,7 @@ main {
     height: 1700px;
     width: 100%;
     position: absolute;
-    top: 2638px;
+    top: 2820px;
 }
 
 .texto-footer {
@@ -637,7 +639,7 @@ footer {
     width: 100%;
     margin-top: 20px;
     position: absolute;
-    top: 4318px;
+    top: 4500px;
     margin: 0;
     padding: 0;
 }
@@ -656,93 +658,26 @@ footer {
     padding: 0;
 }
 
-@media (min-width: 344px) {
-    .nav-bar {
-        width: 190px;
-    }
-
-    .buscar {
-        width: 125px;
-    }
-
-    .jogos {
-        right: 7px;
-    }
-
-    .boas-vindas {
-        font-size: 35px;
-    }
-
-    .b-cardapio {
-        top: 290px;
-    }
-
-    .titulo-carrossel {
-        top: 330px;
-    }
-
-    .carrossel {
-        top: 420px;
-        width: 300px;
-    }
-
-    .img-carrossel {
-        width: 150px;
-    }
-
-    .sobre-nos {
-        top: 700px;
-    }
-
-    #topico2 {
-    box-shadow: inset 0 7px 0 0 #D95F3A,
-        inset 0 -7px 0 0 #D95F3A;
-    margin-top: 100px;
-    height: 380px;
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-/* } continuar aqui */
-
-
-}
 
 @media (min-width: 360px) {
     .carrossel {
         width: 330px
     }
 
+    .img-carrossel {
+        width: 160px;
+    }
+
     .jogos {
-        right: 5px;
+        right: 10px;
     }
 
     .nav-bar {
-        left: 90px;
+        width: 200px;
+    }
+
+    .buscar {
+        width: 130px;
     }
 
     .b-cardapio {
@@ -753,21 +688,47 @@ footer {
         top: 140px;
     }
 
-    #logo-sobre-nos {
-        left: 40%;
+    .contato {
+        top: 2495px;
+        height: 325px;
     }
 
-    #localizacao-sobre-nos {
-        top: 965px;
+}
+
+@media (min-width: 375px) {
+    .carrossel {
+        width: 350px;
     }
 
-    #nosso-espaco-sobre-nos {
-        top: 1410px;
+    .img-carrossel {
+        width: 180px;
     }
 
-    #personagens-sobre-nos {
-        right: 5%;
+    .b-cardapio {
+        top: 310px;
     }
+
+    .titulo-carrossel {
+        top: 380px;
+    }
+
+    .boas-vindas {
+        font-size: 38px;
+    }
+
+    .boas-vindas::after {
+        font-size: 35px;
+    }
+
+    .jogos {
+        width: 42px;
+        height: 42px;
+    }
+
+    #controle-video-game {
+        width: 28px;
+    }
+
 }
 
 @media (min-width: 390px) {
@@ -775,6 +736,10 @@ footer {
         width: 220px;
         height: 45px;
         left: 105px;
+    }
+
+    .buscar {
+        width: 150px;
     }
 
     .jogos {
@@ -804,21 +769,9 @@ footer {
         font-size: 20px;
     }
 
-    #logo-sobre-nos {
-        left: 120px;
-    }
-
-    #personagens-sobre-nos {
-        right: 10%;
-    }
-
-    #localizacao-sobre-nos,
-    #nosso-espaco-sobre-nos {
-        left: 70px;
-    }
-
     .contato {
-        height: 330px;
+        top: 2470px;
+        height: 350px;
     }
 
     .rodape {
@@ -829,26 +782,30 @@ footer {
         height: 1700px;
         width: 100%;
         position: absolute;
-        top: 2668px;
+        top: 2820px;
     }
 
     footer {
         position: absolute;
-        top: 4347px;
+        top: 4500px;
     }
 }
 
 @media (min-width: 400px) {
-    #personagens-sobre-nos {
-        right: 11%;
+    .nav-bar {
+        width: 230px;
     }
 
-    #localizacao-sobre-nos {
-        left: 80px;
+    .buscar {
+        width: 160px;
     }
 
-    #nosso-espaco-sobre-nos {
-        left: 80px;
+    .carrossel {
+        width: 370px;
+    }
+
+    .img-carrossel {
+        width: 190px;
     }
 }
 
@@ -856,10 +813,6 @@ footer {
 
     .b-cardapio {
         top: 315px;
-    }
-
-    #logo-sobre-nos {
-        left: 125px;
     }
 
 }
@@ -881,14 +834,6 @@ footer {
         width: 200px;
     }
 
-    #logo-sobre-nos {
-        left: 130px;
-    }
-
-    #personagens-sobre-nos {
-        right: 10%;
-    }
-
 }
 
 @media (min-width: 414px) {
@@ -902,22 +847,6 @@ footer {
 
     .carrossel {
         width: 380px;
-    }
-
-    #logo-sobre-nos {
-        left: 140px;
-    }
-
-    #personagens-sobre-nos {
-        right: 11%;
-    }
-
-    #localizacao-sobre-nos {
-        left: 85px;
-    }
-
-    #nosso-espaco-sobre-nos {
-        left: 85px;
     }
 }
 
@@ -955,17 +884,8 @@ footer {
         width: 220px;
     }
 
-    #personagens-sobre-nos {
-        right: 12%;
+    .contato {
+        top: 2450px;
+        height: 370px;
     }
-
-    #localizacao-sobre-nos {
-        left: 95px;
-    }
-
-    #nosso-espaco-sobre-nos {
-        left: 95px;
-    }
-
-
 }
