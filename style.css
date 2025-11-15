@@ -18,6 +18,7 @@ body {
     flex-direction: column;
     width: 100%;
     max-width: 100vw;
+    height: auto;
 }
 
 @font-face {
@@ -310,7 +311,6 @@ main {
     justify-content: center;
     gap: 8px;
     padding: 10px 0;
-
 }
 
 .indicador {
@@ -381,9 +381,8 @@ main {
 .sobre-nos {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 750px;
     width: 80%;
+    margin-top: 400px;
 }
 
 .titulo-sobre-nos {
@@ -504,12 +503,11 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    top: 2520px;
     width: 100%;
     box-shadow: inset 0 7px 0 0 #52362B,
         inset 0 -7px 0 0 #52362B;
-    height: 300px;
+    height: 350px;
+    margin-top: 5px;
 }
 
 .fale-conosco {
@@ -526,8 +524,6 @@ main {
     font-weight: 300;
     text-align: center;
     margin-top: -10px;
-    position: absolute;
-    top: 80px;
 }
 
 .siga-nos {
@@ -573,8 +569,6 @@ main {
     background-color: #D95F3A;
     height: 1700px;
     width: 100%;
-    position: absolute;
-    top: 2820px;
 }
 
 .texto-footer {
@@ -638,8 +632,6 @@ footer {
     height: 20px;
     width: 100%;
     margin-top: 20px;
-    position: absolute;
-    top: 4500px;
     margin: 0;
     padding: 0;
 }
@@ -888,4 +880,51 @@ footer {
         top: 2450px;
         height: 370px;
     }
+}
+
+/* responsividade para tablets */
+
+@media (min-width: 540px) {
+    .nav-bar {
+        width: 350px;
+    }
+
+    .buscar {
+        width: 270px;
+    }
+
+    .jogos {
+        right: 25px;
+    }
+
+    .boas-vindas {
+        font-size: 55px;
+    }
+
+    .boas-vindas::after {
+        font-size: 50px;
+        right: 75px;
+    }
+
+    .b-cardapio {
+        top: 380px;
+        padding: 10px 20px;
+        font-size: 18px;
+    }
+
+    .titulo-carrossel {
+        top: 450px;
+        font-size: 24px;
+    }
+
+    .carrossel {
+        width: 500px;
+    }
+
+    .img-carrossel {
+        width: 280px;
+    }
+
+
+
 }
