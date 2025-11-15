@@ -66,6 +66,10 @@ header {
     transition: 0.5s;
 }
 
+.menu {
+    display: none;
+}
+
 /* animacao em x do botão de menu */
 .menu-burguer svg path {
     transition: transform 0.3s ease;
@@ -274,7 +278,6 @@ main {
     height: 200px;
     display: flex;
     align-items: center;
-    font-size: 24px;
     color: #F2D5B3;
 }
 
@@ -383,6 +386,7 @@ main {
     flex-direction: column;
     width: 80%;
     margin-top: 400px;
+    height: 1765px;
 }
 
 .titulo-sobre-nos {
@@ -391,7 +395,7 @@ main {
     font-weight: 300;
     text-align: center;
     margin-bottom: 20px;
-    margin-left: 67px;
+    margin-left: 120px;
     line-height: 1.50;
     margin-top: 0;
 }
@@ -469,6 +473,13 @@ main {
 #localizacao-sobre-nos {
     width: 250px;
     border-radius: 50px;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-left: 25px;
+}
+
+#localizacao-sobre-nos:hover {
+    transform: scale(1.1);
 }
 
 #topico3 {
@@ -524,6 +535,7 @@ main {
     font-weight: 300;
     text-align: center;
     margin-top: -10px;
+
 }
 
 .siga-nos {
@@ -541,6 +553,7 @@ main {
     margin-top: 10px;
     margin-left: 25px;
     text-decoration: none;
+    text-decoration: underline;
 }
 
 .link-whatsapp:hover {
@@ -680,9 +693,13 @@ footer {
         top: 140px;
     }
 
+    .sobre-nos {
+        height: 1747px;
+    }
+
     .contato {
-        top: 2495px;
-        height: 325px;
+        margin-top: 0;
+        height: 365px;
     }
 
 }
@@ -745,6 +762,14 @@ footer {
         width: 110px;
     }
 
+    .sobre-nos {
+        height: 1722px;
+    }
+
+    .contato {
+        height: 365px;
+    }
+
     #controle-video-game {
         right: 7.2px;
         top: 7px;
@@ -762,24 +787,7 @@ footer {
     }
 
     .contato {
-        top: 2470px;
-        height: 350px;
-    }
-
-    .rodape {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: #D95F3A;
-        height: 1700px;
-        width: 100%;
-        position: absolute;
-        top: 2820px;
-    }
-
-    footer {
-        position: absolute;
-        top: 4500px;
+        height: 360px;
     }
 }
 
@@ -876,13 +884,111 @@ footer {
         width: 220px;
     }
 
+    .sobre-nos {
+        height: 1697px;
+    }
+
     .contato {
-        top: 2450px;
-        height: 370px;
+        height: 380px;
     }
 }
 
 /* responsividade para tablets */
+
+@media (min-width: 480px) {
+    .nav-bar {
+        width: 300px;
+    }
+
+    .buscar {
+        width: 220px;
+    }
+
+    .jogos {
+        right: 15px;
+    }
+
+    .boas-vindas {
+        font-size: 45px;
+    }
+
+    .boas-vindas::after {
+        font-size: 40px;
+        right: 60px;
+    }
+
+    .b-cardapio {
+        top: 340px;
+        padding: 7px 17px;
+        font-size: 16px;
+    }
+
+    .titulo-carrossel {
+        top: 410px;
+        font-size: 30px;
+    }
+
+    .carrossel {
+        width: 420px;
+        height: 250px;
+        top: 500px;
+    }
+
+    .img-carrossel {
+        width: 240px;
+    }
+
+    .cartao {
+        height: 220px;
+    }
+}
+
+@media (min-width: 500px) {
+    .nav-bar {
+        width: 320px;
+    }
+
+    .buscar {
+        width: 240px;
+    }
+
+    .jogos {
+        right: 20px;
+    }
+
+    .boas-vindas {
+        font-size: 50px;
+    }
+
+    .boas-vindas::after {
+        font-size: 45px;
+        right: 70px;
+    }
+
+    .b-cardapio {
+        top: 360px;
+        padding: 8px 18px;
+        font-size: 17px;
+    }
+
+    .titulo-carrossel {
+        top: 440px;
+    }
+
+    .carrossel {
+        width: 450px;
+        height: 280px;
+        top: 530px;
+    }
+
+    .img-carrossel {
+        width: 260px;
+    }
+
+    .cartao {
+        height: 240px;
+    }
+}
 
 @media (min-width: 540px) {
     .nav-bar {
@@ -913,18 +1019,483 @@ footer {
     }
 
     .titulo-carrossel {
-        top: 450px;
+        top: 470px;
         font-size: 24px;
     }
 
     .carrossel {
         width: 500px;
+        height: 300px;
+        top: 550px;
     }
 
     .img-carrossel {
         width: 280px;
     }
 
+    .cartao {
+        height: 260px;
+    }
+
+    .subtitulo-sobre-nos {
+        font-size: 30px;
+    }
+
+    .sobre-nos {
+        height: 1993px;
+    }
+
+    .texto-sobre-nos {
+        font-size: 18px;
+    }
+
+    #topico1 {
+        height: 450px;
+    }
+
+    #logo-sobre-nos {
+        width: 200px;
+        margin-bottom: 15px;
+    }
+
+    #topico2 {
+        height: 500px;
+
+    }
+
+    #personagens-sobre-nos {
+        width: 200px;
+    }
+
+    #topico3 {
+        min-height: 450px;
+    }
+
+    #localizacao-sobre-nos {
+        width: 300px;
+        margin-left: 30px;
+    }
+
+    #topico4 {
+        min-height: 510px;
+    }
+
+    #nosso-espaco-sobre-nos {
+        width: 300px;
+    }
+
+    .contato {
+        height: 440px;
+    }
+
+    .fale-conosco {
+        font-size: 30px;
+    }
+
+    .texto-whatsapp {
+        font-size: 20px;
+    }
+
+    .link-whatsapp {
+        font-size: 25px;
+    }
+
+    #whatsapp-icon {
+        width: 40px;
+    }
+
+    .siga-nos {
+        font-size: 25px;
+    }
+}
+
+@media (min-width: 600px) {
+    .nav-bar {
+        width: 400px;
+    }
+
+    .buscar {
+        width: 320px;
+    }
+
+    .titulo-carrossel {
+        font-size: 30px;
+        top: 500px;
+    }
+
+    .carrossel {
+        width: 550px;
+        height: 320px;
+        top: 590px;
+    }
+
+    .nome-prato {
+        font-size: 30px;
+    }
+
+    .preco-prato {
+        font-size: 20px;
+    }
+
+    .botao-ver {
+        width: 100px;
+        height: 40px;
+        font-size: 15px;
+    }
+
+    .sobre-nos {
+        margin-top: 500px;
+        height: 2050px;
+    }
+
+    .titulo-sobre-nos {
+        font-size: 40px;
+    }
+
+}
+
+@media (min-width: 611px) {
+    .sobre-nos {
+        height: 2025px;
+    }
+}
+
+@media (min-width: 635px) {
+    .nav-bar {
+        width: 440px;
+    }
+
+    .buscar {
+        width: 360px;
+    }
+
+    .titulo-carrossel {
+        top: 520px;
+    }
+
+    .carrossel {
+        top: 610px;
+    }
+}
+
+@media (min-width: 670px) {
+    .boas-vindas {
+        font-size: 60px;
+        top: 150px;
+    }
+
+    .boas-vindas::after {
+        font-size: 55px;
+        right: 85px;
+    }
+
+    .b-cardapio {
+        top: 420px;
+        padding: 12px 22px;
+        font-size: 20px;
+    }
+
+    .nav-bar {
+        width: 480px;
+    }
+
+    .buscar {
+        width: 400px;
+    }
+
+    .titulo-carrossel {
+        top: 540px;
+    }
+
+    .carrossel {
+        top: 630px;
+    }
+}
+
+@media (min-width: 700px) {
+    .nav-bar {
+        width: 500px;
+    }
+
+    .buscar {
+        width: 400px;
+    }
+
+    .titulo-carrossel {
+        top: 560px;
+    }
+
+    .carrossel {
+        top: 650px;
+    }
+
+    .b-cardapio {
+        top: 450px;
+    }
+}
+
+@media (min-width: 730px) {
+    .nav-bar {
+        width: 540px;
+    }
+
+    .buscar {
+        width: 450px;
+    }
+
+    .titulo-carrossel {
+        top: 590px;
+    }
+
+    .carrossel {
+        top: 690px;
+    }
+}
+
+@media (min-width: 750px) {
+    .logo {
+        width: 150px;
+    }
+
+    header {
+        height: 150px;
+    }
+
+    .nav-bar {
+        top: 65px;
+        margin-left: 50px;
+        width: 490px;
+        height: 60px;
+    }
+
+    .buscar {
+        height: 25px;
+    }
+
+    .jogos {
+        width: 55px;
+        height: 55px;
+        top: 65px;
+    }
+
+    #controle-video-game {
+        width: 40px;
+    }
+
+    svg {
+        width: 34px !important;
+        height: 34px !important;
+    }
+
+    .link-menu {
+        right: 60px;
+    }
+
+    .boas-vindas {
+        font-size: 75px;
+        top: 180px;
+    }
+
+    .boas-vindas::after {
+        right: 100px;
+    }
+
+    .b-cardapio {
+        top: 530px;
+        width: 200px;
+        height: 90px;
+        font-size: 25px;
+    }
+
+    .titulo-carrossel {
+        top: 620px;
+        font-size: 40px;
+    }
+
+    .carrossel {
+        top: 750px;
+        width: 700px;
+        height: 350px;
+    }
+
+    .cartao {
+        margin-top: 20px;
+    }
+
+    .img-carrossel {
+        width: 350px;
+    }
+
+    .nome-prato {
+        font-size: 40px;
+    }
+
+    .preco-prato {
+        font-size: 25px;
+    }
+
+    .botao-ver {
+        width: 150px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .sobre-nos {
+        height: 2365px;
+    }
+
+    .titulo-sobre-nos {
+        font-size: 40px;
+    }
+
+    .subtitulo-sobre-nos {
+        font-size: 35px;
+    }
+
+    .texto-sobre-nos {
+        font-size: 25px;
+    }
+
+    #topico1 {
+        height: 514px;
+    }
+
+    #topico2 {
+        height: 580px;
+    }
+
+    #topico3 {
+        min-height: 520px;
+    }
+
+    #topico4 {
+        min-height: 590px;
+    }
+
+    .contato {
+        height: 500px;
+    }
+
+    .fale-conosco {
+        font-size: 35px;
+    }
+
+    .texto-whatsapp {
+        font-size: 25px;
+    }
+
+    .link-whatsapp {
+        font-size: 25px;
+    }
+
+    .siga-nos {
+        font-size: 30px;
+    }
+
+    .contatos-footer,
+    .mapa-site {
+        font-size: 40px;
+    }
+
+    .redes-icon-footer {
+        width: 50px;
+    }
+
+    .link-mapa-site {
+        font-size: 35px;
+    }
 
 
+    .texto-footer {
+        font-size: 30px;
+    }
+
+    .rodape {
+        height: 2200px;
+    }
+
+    .logo-rodape {
+        width: 200px;
+    }
+
+    #copyright {
+        font-size: 20px;
+    }
+
+    footer {
+        height: 35px;
+    }
+
+    .link-menu {
+        width: 250px;
+        height: 300px;
+    }
+
+    .a-menu-burguer {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-bar {
+        width: 500px;
+    }
+
+    .titulo-carrossel {
+        top: 660px;
+    }
+
+    .carrossel {
+        top: 800px;
+    }
+
+    .sobre-nos {
+        margin-top: 600px;
+    }
+}
+
+@media (min-width: 776px) {
+    .sobre-nos {
+        height: 2305px;
+    }
+}
+
+@media (min-width: 809px) {
+    .nav-bar {
+        width: 550px;
+    }
+
+
+    .sobre-nos {
+        height: 2267px;
+    }
+
+    #topico1 {
+        height: 475px;
+    }
+}
+
+@media (min-width: 830px) {
+    .nav-bar {
+        width: 570px;
+    }
+
+    .buscar {
+        width: 480px;
+    }
+
+    .titulo-carrossel {
+        top: 700px
+    }
+
+    .carrossel {
+        top: 850px
+    }
+
+}
+
+@media (min-width: 833px) {
+    .sobre-nos {
+        height: 2230px;
+    }
 }
