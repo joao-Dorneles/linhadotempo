@@ -395,7 +395,7 @@ main {
     font-weight: 300;
     text-align: center;
     margin-bottom: 20px;
-    margin-left: 120px;
+    margin-left: 60px;
     line-height: 1.50;
     margin-top: 0;
 }
@@ -697,6 +697,10 @@ footer {
         height: 1747px;
     }
 
+    .titulo-sobre-nos {
+        margin-left: 70px;
+    }
+
     .contato {
         margin-top: 0;
         height: 365px;
@@ -834,6 +838,10 @@ footer {
         width: 200px;
     }
 
+    .titulo-sobre-nos {
+        margin-left: 75px;
+    }
+
 }
 
 @media (min-width: 414px) {
@@ -941,6 +949,10 @@ footer {
     .cartao {
         height: 220px;
     }
+
+    .titulo-sobre-nos {
+        margin-left: 85px;
+    }
 }
 
 @media (min-width: 500px) {
@@ -987,6 +999,10 @@ footer {
 
     .cartao {
         height: 240px;
+    }
+
+    .titulo-sobre-nos {
+        margin-left: 90px;
     }
 }
 
@@ -1035,6 +1051,10 @@ footer {
 
     .cartao {
         height: 260px;
+    }
+
+    .titulo-sobre-nos {
+        margin-left: 95px;
     }
 
     .subtitulo-sobre-nos {
@@ -1149,6 +1169,10 @@ footer {
     }
 
     .titulo-sobre-nos {
+        margin-left: 100px;
+    }
+
+    .titulo-sobre-nos {
         font-size: 40px;
     }
 
@@ -1157,6 +1181,10 @@ footer {
 @media (min-width: 611px) {
     .sobre-nos {
         height: 2025px;
+    }
+
+    .titulo-sobre-nos {
+        margin-left: 110px;
     }
 }
 
@@ -1175,6 +1203,10 @@ footer {
 
     .carrossel {
         top: 610px;
+    }
+
+    .titulo-sobre-nos {
+        margin-left: 115px;
     }
 }
 
@@ -1232,6 +1264,10 @@ footer {
     .b-cardapio {
         top: 450px;
     }
+
+    .titulo-sobre-nos {
+        margin-left: 120px;
+    }
 }
 
 @media (min-width: 730px) {
@@ -1249,6 +1285,10 @@ footer {
 
     .carrossel {
         top: 690px;
+    }
+
+    .titulo-sobre-nos {
+        margin-left: 125px;
     }
 }
 
@@ -1346,6 +1386,8 @@ footer {
 
     .titulo-sobre-nos {
         font-size: 40px;
+        margin-left: 130px;
+
     }
 
     .subtitulo-sobre-nos {
@@ -1452,6 +1494,10 @@ footer {
     .sobre-nos {
         margin-top: 600px;
     }
+
+    .titulo-sobre-nos {
+        margin-left: 130px;
+    }
 }
 
 @media (min-width: 776px) {
@@ -1465,9 +1511,12 @@ footer {
         width: 550px;
     }
 
-
     .sobre-nos {
         height: 2267px;
+    }
+
+    .titulo-sobre-nos {
+        margin-left: 165px;
     }
 
     #topico1 {
@@ -1498,4 +1547,228 @@ footer {
     .sobre-nos {
         height: 2230px;
     }
+}
+
+@media (min-width: 880px) {
+    .titulo-carrossel {
+        top: 750px;
+    }
+
+    .carrossel {
+        top: 900px;
+    }
+
+    .redes-icon {
+        width: 50px;
+    }
+}
+
+@media (min-width: 900px) {
+    .nav-bar {
+        width: 640px;
+    }
+
+    .buscar {
+        width: 600px;
+    }
+
+    .boas-vindas {
+        top: 230px;
+    }
+
+    .b-cardapio {
+        top: 600px;
+    }
+
+    .carrossel {
+        width: 800px;
+        height: 400px;
+    }
+
+    .img-carrossel {
+        width: 400px;
+    }
+
+    .cartao {
+        margin-top: 60px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 930px) {
+    .nav-bar {
+        width: 670px;
+    }
+}
+
+@media (min-width: 960px) {
+    .nav-bar {
+        width: 700px;
+    }
+
+    .titulo-carrossel {
+        top: 800px
+    }
+
+    .carrossel {
+        top: 930px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .logo {
+        width: 200px;
+    }
+
+    .nav-bar {
+        width: 680px;
+        height: 70px;
+        left: 150px;
+        top: 55px;
+    }
+
+    .buscar {
+        height: 30px;
+    }
+
+    svg {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .jogos {
+        top: 58px;
+        width: 65px;
+        height: 65px;
+    }
+
+    #controle-video-game {
+        width: 50px;
+    }
+
+    .boas-vindas {
+        font-size: 100px;
+    }
+
+    .boas-vindas::after {
+        font-size: 90px;
+        right: 130px;
+    }
+
+    .b-cardapio {
+        top: 650px;
+        width: 300px;
+        height: 120px;
+        font-size: 35px;
+        border-radius: 30px;
+    }
+
+    .titulo-carrossel {
+        font-size: 60px;
+    }
+
+    .carrossel {
+        top: 1000px;
+        width: 90%;
+        height: 450px;
+    }
+
+    .img-carrossel {
+        width: 500px;
+    }
+
+    .cartao {
+        margin-bottom: 70px;
+    }
+
+    .indicador {
+        width: 12px;
+        height: 12px;
+    }
+
+    #voltar, #avancar {
+        font-size: 40px;
+    }
+
+    .sobre-nos {
+        margin-top: 700px;
+        height: 2846px;
+    }
+
+    .titulo-sobre-nos {
+        font-size: 60px;
+        margin-left: 190px;
+    }
+
+    .subtitulo-sobre-nos {
+        font-size: 40px;
+    }
+
+    .texto-sobre-nos {
+        font-size: 30px;
+    }
+
+    #topico1 {
+        height: 619px;
+    }
+
+    #topico2 {
+        height: 700px;
+    }
+
+    #topico3 {
+        min-height: 600px;
+    }
+
+    #topico4 {
+        min-height: 700px;
+    }
+
+    #logo-sobre-nos, #personagens-sobre-nos {
+        width: 300px;
+    }
+
+    #localizacao-sobre-nos, #nosso-espaco-sobre-nos {
+        width: 400px;
+    }
+
+    .contato {
+        height: 600px;
+    }
+
+    .fale-conosco {
+        font-size: 45px;
+    }
+
+    .texto-whatsapp {
+        font-size: 30px;
+    }
+
+    .link-whatsapp {
+        font-size: 30px;
+    }
+
+    #whatsapp-icon {
+        width: 50px;
+    }
+
+    .siga-nos {
+        font-size: 35px;
+    }
+
+    .redes-icon {
+        width: 60px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .nav-bar {
+        width: 700px;
+    }
+}
+
+/* versão desktok */
+
+@media (min-width: 1025px) {
+
 }
