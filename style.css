@@ -70,6 +70,10 @@ header {
     display: none;
 }
 
+.link-menu-desktop {
+    display: none;
+}
+
 /* animacao em x do botão de menu */
 .menu-burguer svg path {
     transition: transform 0.3s ease;
@@ -582,6 +586,10 @@ main {
     background-color: #D95F3A;
     height: 1700px;
     width: 100%;
+}
+
+.rodape-desktop {
+    display: none;
 }
 
 .texto-footer {
@@ -1686,7 +1694,8 @@ footer {
         height: 12px;
     }
 
-    #voltar, #avancar {
+    #voltar,
+    #avancar {
         font-size: 40px;
     }
 
@@ -1724,11 +1733,13 @@ footer {
         min-height: 700px;
     }
 
-    #logo-sobre-nos, #personagens-sobre-nos {
+    #logo-sobre-nos,
+    #personagens-sobre-nos {
         width: 300px;
     }
 
-    #localizacao-sobre-nos, #nosso-espaco-sobre-nos {
+    #localizacao-sobre-nos,
+    #nosso-espaco-sobre-nos {
         width: 400px;
     }
 
@@ -1765,10 +1776,311 @@ footer {
     .nav-bar {
         width: 700px;
     }
+
+    .titulo-sobre-nos {
+        margin-left: 200px;
+    }
 }
 
 /* versão desktok */
 
 @media (min-width: 1025px) {
+    .link-menu-desktop {
+        display: flex;
+    }
 
+    .lista-link-desktop {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .a-menu-desktop {
+        font-size: 17px;
+        transition: 0.5s;
+    }
+
+    .a-menu-desktop:hover {
+        text-shadow: 0 0 15px #F2D5B3;
+    }
+
+
+    .li-menu-desktop {
+        margin-bottom: 0;
+        transition: 0.5s;
+    }
+
+    .li-menu-desktop:hover {
+        transform: scale(1.1);
+    }
+
+    .buscar {
+        width: 155px;
+    }
+
+    .buscar:hover {
+        transform: scale(1.1);
+        border: #D3B38C 2px solid;
+    }
+
+    .menu-burguer {
+        display: none;
+    }
+
+    .jogos:hover {
+        box-shadow: 0 0 15px #52362B;
+    }
+
+    .b-cardapio:hover {
+        transform: scale(1.1);
+    }
+
+    .botao-ver:hover {
+        transform: scale(1.1);
+    }
+
+    #voltar,
+    #avancar {
+        transition: 0.5s;
+    }
+
+    #voltar:hover,
+    #avancar:hover {
+        transform: scale(1.1);
+    }
+
+    .link-whatsapp {
+        transition: 0.5s;
+    }
+
+    .link-whatsapp:hover {
+        transform: scale(1.1);
+        text-shadow: 0 0 2px #52362B;
+
+    }
+
+    .redes-icon {
+        transition: 0.5s;
+        border-radius: 50px;
+    }
+
+    .redes-icon:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px #52362B;
+    }
+
+    .redes-icon-footer {
+        transition: 0.5s;
+    }
+
+    .redes-icon-footer:hover {
+        transform: scale(1.1);
+    }
+
+    .link-mapa-site,
+    .li-mapa-footer {
+        transition: 0.5s;
+    }
+
+    .link-mapa-site:hover {
+        text-shadow: 0 0 10px #D3B38C;
+    }
+
+    .li-mapa-footer:hover {
+        transform: scale(1.1);
+    }
+
+    .rodape {
+        display: none;
+    }
+
+    .rodape-desktop {
+        display: flex;
+        background-color: #D95F3A;
+        justify-content: center;
+        gap: 80px;
+        flex-direction: row;
+    }
+
+    .div-central {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .div-contatos {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .texto-footer-desktop-1 {
+        font-size: 25px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #FAF2E1;
+        text-align: left;
+    }
+
+    .texto-footer-desktop-2 {
+        font-size: 25px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #FAF2E1;
+        text-align: right;
+    }
+
+    .logo-rodape-desktop {
+        width: 300px;
+        height: 300px;
+    }
+
+    .equipe-ti {
+        width: 340px;
+    }
+
+    .nome-equipe-ti {
+        margin-left: 40px;
+    }
+
+    .nome-equipe-adm {
+        margin-right: 40px;
+    }
+
+    .nome-contatos-desktop {
+        margin-top: 0;
+        font-size: 40px;
+    }
+
+    .redes-icon-footer {
+        width: 40px;
+    }
+
+    .contatos {
+        margin-bottom: 40px;
+    }
+
+    .link-mapa-site {
+        font-size: 25px;
+
+    }
+
+    .alinhar-texto {
+        text-align: left;
+    }
+}
+
+@media (min-width: 1080px) {
+    .nav-bar {
+        width: 750px;
+    }
+
+    .a-menu-desktop {
+        font-size: 18px;
+    }
+
+    .buscar {
+        width: 180px;
+    }
+
+    .titulo-sobre-nos {
+        margin-left: 210px;
+    }
+}
+
+@media (min-width: 1100px) {
+    .nav-bar {
+        width: 780px;
+    }
+
+    .a-menu-desktop {
+        font-size: 20px;
+    }
+
+    .titulo-carrossel {
+        top: 860px;
+    }
+
+    .carrossel {
+        top: 1050px;
+    }
+
+    .nome-prato {
+        font-size: 50px;
+        line-height: 70px;
+    }
+
+    .preco-prato {
+        font-size: 30px;
+    }
+
+    .botao-ver {
+        width: 200px;
+        height: 75px;
+    }
+
+    .titulo-sobre-nos {
+        margin-left: 220px;
+    }
+}
+
+@media (min-width: 1150px) {
+    .nav-bar {
+        width: 830px;
+    }
+
+    .a-menu-desktop {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1180px) {
+    .nav-bar {
+        width: 860px;
+    }
+
+    .a-menu-desktop {
+        font-size: 24px;
+    }
+
+    .boas-vindas {
+        top: 200px
+    }
+
+    .b-cardapio {
+        top: 700px;
+    }
+
+    .titulo-carrossel {
+        top: 900px;
+    }
+
+    .carrossel {
+        top: 1100px;
+    }
+}
+
+@media (min-width: 1214px) {
+    .sobre-nos {
+        height: 2730px;
+    }
+}
+
+@media (min-width: 1240px) {
+    .nav-bar {
+        width: 920px;
+    }
+
+    .titulo-carrossel {
+        top: 950px;
+    }
+
+    .carrossel {
+        top: 1120px;
+        height: 500px;
+    }
+
+    .img-carrossel {
+        width: 600px;
+    }
+
+    .cartao {
+        margin-top: 100px;
+    }
 }
