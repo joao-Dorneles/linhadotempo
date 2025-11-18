@@ -23,8 +23,8 @@ body {
 
 @font-face {
     font-family: "InkNutAntiqua";
-    src: url(../fonts/InknutAntiqua-Regular.woff2) format("woff2"),
-        url(../fonts/InknutAntiqua-Regular.woff) format("woff");
+    src: url(./fonts/InknutAntiqua-Regular.woff2) format("woff2"),
+        url(./fonts/InknutAntiqua-Regular.woff) format("woff");
     font-weight: normal;
     font-style: normal;
 }
