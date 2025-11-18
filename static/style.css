@@ -2097,4 +2097,131 @@ footer {
     .lista-link-desktop {
         gap: 20px;
     }
+
+    .titulo-carrossel {
+        top: 1000px;
+    }
+
+    .carrossel {
+        top: 1200px;
+    }
+
+    .titulo-sobre-nos {
+        margin-left: 300px;
+    }
+
+    .sobre-nos {
+        height: 2845px;
+    }
+}
+
+@media (min-width: 1314px) {
+    .sobre-nos {
+        height: 2755px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .nav-bar {
+        width: 1080px;
+    }
+
+    .buscar {
+        width: 250px;
+    }
+
+    .boas-vindas {
+        font-size: 150px;
+    }
+
+    .boas-vindas::after {
+        font-size: 120px;
+        right: 200px;
+    }
+
+    .b-cardapio {
+        top: 900px;
+        width: 400px;
+    }
+
+    .titulo-carrossel {
+        top: 1100px;
+    }
+
+    .carrossel {
+        top: 1300px;
+        height: 600px;
+    }
+
+    .cartao {
+        height: 300px;
+    }
+
+    .sobre-nos {
+        margin-top: 900px;
+    }
+}
+
+@media (min-width: 1415px) {
+    .sobre-nos {
+        height: 2710px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .nav-bar {
+        width: 1180px;
+    }
+
+    .a-menu-desktop {
+        font-size: 30px;
+    }
+
+    .titulo-sobre-nos {
+        margin-left: 320px;
+    }
+
+    .subtitulo-sobre-nos {
+        font-size: 50px;
+    }
+
+    .texto-sobre-nos {
+        font-size: 35px;
+    }
+
+    .sobre-nos {
+        height: 2985px;
+    }
+
+    #topico1 {
+        height: 680px;
+    }
+
+    #topico2 {
+        height: 800px;
+    }
+
+    #topico3 {
+        min-height: 700px;
+    }
+}
+
+@media (min-width: 1540px) {
+    .titulo-carrossel {
+        top: 1150px;
+    }
+
+    .carrossel {
+        top: 1400px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .nav-bar {
+        width: 1280px;
+    }
+    
+    .titulo-carrossel {
+        top: 1200px;
+    }
 }
