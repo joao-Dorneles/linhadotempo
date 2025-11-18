@@ -23,8 +23,8 @@ body {
 
 @font-face {
     font-family: "InkNutAntiqua";
-    src: url(./fonts/InknutAntiqua-Regular.woff2) format("woff2"),
-        url(./fonts/InknutAntiqua-Regular.woff) format("woff");
+    src: url(../fonts/InknutAntiqua-Regular.woff2) format("woff2"),
+        url(../fonts/InknutAntiqua-Regular.woff) format("woff");
     font-weight: normal;
     font-style: normal;
 }
@@ -2082,5 +2082,19 @@ footer {
 
     .cartao {
         margin-top: 100px;
+    }
+}
+
+@media (min-width: 1300px) {
+    .nav-bar {
+        width: 980px;
+    }
+
+    .a-menu-desktop {
+        font-size: 26px;
+    }
+
+    .lista-link-desktop {
+        gap: 20px;
     }
 }
