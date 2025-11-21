@@ -248,6 +248,7 @@ main {
     border: none;
     border-radius: 5px;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 .b-cardapio:hover {
@@ -2223,5 +2224,58 @@ footer {
     
     .titulo-carrossel {
         top: 1200px;
+    }
+}
+
+@media (min-width: 1645px) {
+    .nav-bar {
+        width: 1310px;
+    }
+
+    .a-menu-desktop {
+        font-size: 35px;
+    }
+
+    .buscar {
+        width: 300px;
+        font-size: 20px;
+    }
+
+    .sobre-nos {
+        height: 2930px;
+    }
+}
+
+@media (min-width: 1700px) {
+    .nav-bar {
+        width: 1380px;
+    }
+
+    .titulo-carrossel {
+        top: 1300px;
+    }
+
+    .carrossel {
+        top: 1500px;
+    }
+}
+
+@media (min-width: 1800px) {
+    .nav-bar {
+        width: 1475px;
+    }
+}
+
+@media (min-width: 1850px) {
+    .nav-bar {
+        width: 1520px;
+    }
+
+    .titulo-carrossel {
+        top: 1375px;
+    }
+
+    .carrossel {
+        top: 1575px;
     }
 }
