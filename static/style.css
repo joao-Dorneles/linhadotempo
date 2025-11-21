@@ -1965,6 +1965,15 @@ footer {
     .alinhar-texto {
         text-align: left;
     }
+
+    .mapa-site {
+        text-align: left;
+        margin-left: 12%;
+    }
+
+    .mapa-site-lista {
+        align-items: start;
+    }
 }
 
 @media (min-width: 1080px) {
