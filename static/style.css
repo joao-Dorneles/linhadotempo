@@ -351,18 +351,18 @@ main {
 .nome-prato {
     font-family: "InkNutAntiqua", serif;
     color: #1F1106;
-    font-weight: 300;
+    font-weight: 600;
     margin-left: 20px;
     margin-top: 40px;
-    line-height: 40px;
-    font-size: 20px;
+    line-height: 20px;
+    font-size: 15px;
 }
 
 .preco-prato {
     font-family: "InkNutAntiqua", serif;
     color: #1F1106;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .botao-ver {
@@ -1160,6 +1160,7 @@ footer {
 
     .nome-prato {
         font-size: 30px;
+        line-height: 35px;
     }
 
     .preco-prato {
@@ -1377,6 +1378,7 @@ footer {
 
     .nome-prato {
         font-size: 40px;
+        line-height: 45px;
     }
 
     .preco-prato {
@@ -2230,7 +2232,7 @@ footer {
     .nav-bar {
         width: 1280px;
     }
-    
+
     .titulo-carrossel {
         top: 1200px;
     }
@@ -2286,5 +2288,35 @@ footer {
 
     .carrossel {
         top: 1575px;
+    }
+
+    .a-menu-desktop {
+        font-size: 45px;
+    }
+
+    .buscar {
+        width: 400px;
+    }
+}
+
+@media(min-width: 2000px) {
+    .nav-bar {
+        width: 1660px;
+    }
+
+    .titulo-carrossel {
+        top: 1500px;
+    }
+
+    .carrossel {
+        top: 1700px;
+    }
+
+    .boas-vindas {
+        top: 400px;
+    }
+
+    .b-cardapio {
+        top: 1200px;
     }
 }
