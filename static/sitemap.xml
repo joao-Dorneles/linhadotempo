@@ -1,224 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Annotations>
-   <!-- Carrossel / Pratos da Casa (apontando para a seção inicio) -->
+<annotations>
+   <!-- Seções principais -->
    <Annotation>
-      <Title>X-Tudo</Title>
-      <URL>https://linhadotempo.onrender.com/#inicio</URL>
-      <Description>X-Tudo — prato em destaque no carrossel (preço mostrado na página).</Description>
+      <ID>inicio</ID>
+      <Title>Início</Title>
+      <URL>#inicio</URL>
+      <Description>Seção inicial da página com boas-vindas e banner</Description>
    </Annotation>
 
    <Annotation>
-      <Title>Coxinha</Title>
-      <URL>https://linhadotempo.onrender.com/#inicio</URL>
-      <Description>Coxinha — item em destaque no carrossel.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Sanduíche de Frango</Title>
-      <URL>https://linhadotempo.onrender.com/#inicio</URL>
-      <Description>Sanduíche de Frango — item em destaque no carrossel.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Sanduíche de Presunto</Title>
-      <URL>https://linhadotempo.onrender.com/#inicio</URL>
-      <Description>Sanduíche de Presunto — item em destaque no carrossel.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Cachorro-Quente</Title>
-      <URL>https://linhadotempo.onrender.com/#inicio</URL>
-      <Description>Cachorro-Quente — item em destaque no carrossel.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Pizza Brotinho</Title>
-      <URL>https://linhadotempo.onrender.com/#inicio</URL>
-      <Description>Pizza Brotinho — item em destaque no carrossel.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Batata Frita</Title>
-      <URL>https://linhadotempo.onrender.com/#inicio</URL>
-      <Description>Batata Frita — item em destaque no carrossel.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Bolo de Chocolate</Title>
-      <URL>https://linhadotempo.onrender.com/#inicio</URL>
-      <Description>Bolo de Chocolate — fatia disponível no cardápio.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Bolo de Leite</Title>
-      <URL>https://linhadotempo.onrender.com/#inicio</URL>
-      <Description>Bolo de Leite — fatia disponível no cardápio.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Bolo de Milho</Title>
-      <URL>https://linhadotempo.onrender.com/#inicio</URL>
-      <Description>Bolo de Milho — fatia disponível no cardápio.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Pudim</Title>
-      <URL>https://linhadotempo.onrender.com/#inicio</URL>
-      <Description>Pudim — sobremesa listada no carrossel.</Description>
-   </Annotation>
-
-   <!-- Links importantes / navegação -->
-   <Annotation>
-      <Title>Cardápio</Title>
-      <URL>https://linhadotempo.onrender.com/cardapio</URL>
-      <Description>Página do Cardápio (lista completa de itens e detalhes).</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Jogos</Title>
-      <URL>https://jogarlinhadotempo.onrender.com</URL>
-      <Description>Link para a seção/jogo externo (Controle Vídeo Game).</Description>
-   </Annotation>
-
-   <Annotation>
+      <ID>sobre-nos</ID>
       <Title>Sobre Nós</Title>
-      <URL>https://linhadotempo.onrender.com/#sobre-nos</URL>
-      <Description>Seção "Nossa Linha do Tempo" — história e localização do negócio.</Description>
+      <URL>#sobre-nos</URL>
+      <Description>Seção sobre a história e a localização da Linha do Tempo</Description>
    </Annotation>
 
    <Annotation>
+      <ID>contatos</ID>
+      <Title>Contato</Title>
+      <URL>#contatos</URL>
+      <Description>Formas de entrar em contato e redes sociais</Description>
+   </Annotation>
+
+   <!-- Pratos -->
+   <Annotation>
+      <ID>x-tudo</ID>
+      <Title>X-Tudo</Title>
+      <URL>#x-tudo</URL>
+      <Description>Prato X-Tudo, preço R$29,99</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>coxinha</ID>
+      <Title>Coxinha</Title>
+      <URL>#coxinha</URL>
+      <Description>Prato Coxinha, preço R$39,99</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>sanduiche-frango</ID>
+      <Title>Sanduiche de Frango</Title>
+      <URL>#sanduiche-frango</URL>
+      <Description>Sanduiche de Frango, preço R$49,99</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>sanduiche-presunto</ID>
+      <Title>Sanduiche de Presunto</Title>
+      <URL>#sanduiche-presunto</URL>
+      <Description>Sanduiche de Presunto, preço R$49,99</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>cachorro-quente</ID>
+      <Title>Cachorro-Quente</Title>
+      <URL>#cachorro-quente</URL>
+      <Description>Cachorro-Quente, preço R$49,99</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>pizza-brotinho</ID>
+      <Title>Pizza Brotinho</Title>
+      <URL>#pizza-brotinho</URL>
+      <Description>Pizza Brotinho, preço R$49,99</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>batata-frita</ID>
+      <Title>Batata Frita</Title>
+      <URL>#batata-frita</URL>
+      <Description>Batata Frita, preço R$49,99</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>bolo-chocolate</ID>
+      <Title>Bolo de Chocolate</Title>
+      <URL>#bolo-chocolate</URL>
+      <Description>Bolo de Chocolate, preço R$49,99</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>bolo-leite</ID>
+      <Title>Bolo de Leite</Title>
+      <URL>#bolo-leite</URL>
+      <Description>Bolo de Leite, preço R$49,99</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>bolo-milho</ID>
+      <Title>Bolo de Milho</Title>
+      <URL>#bolo-milho</URL>
+      <Description>Bolo de Milho, preço R$49,99</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>pudim</ID>
+      <Title>Pudim</Title>
+      <URL>#pudim</URL>
+      <Description>Pudim, preço R$49,99</Description>
+   </Annotation>
+
+   <!-- Timeline / História -->
+   <Annotation>
+      <ID>primeiros-dias</ID>
+      <Title>Primeiros Dias</Title>
+      <URL>#primeiros-dias</URL>
+      <Description>Primeiros passos dos sócios na criação da empresa</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>meses-depois</ID>
+      <Title>Alguns Meses Mais Tarde</Title>
+      <URL>#meses-depois</URL>
+      <Description>Decisões sobre o negócio temático e lanchonete retrô</Description>
+   </Annotation>
+
+   <Annotation>
+      <ID>localizacao</ID>
       <Title>Localização</Title>
-      <URL>https://linhadotempo.onrender.com/#sobre-nos</URL>
-      <Description>Informação sobre localização e link para mapa (Google Maps).</Description>
+      <URL>#localizacao</URL>
+      <Description>Localização da Linha do Tempo, cidade de Rosário, MA</Description>
    </Annotation>
 
    <Annotation>
-      <Title>Contato / WhatsApp</Title>
-      <URL>https://wa.me/5598988844153</URL>
-      <Description>Contato via WhatsApp para pedidos e dúvidas: (98) 9 8884-4153.</Description>
+      <ID>nosso-espaco</ID>
+      <Title>Nosso Espaço</Title>
+      <URL>#nosso-espaco</URL>
+      <Description>Ambiente decorado, música de fundo e espaço kids</Description>
+   </Annotation>
+
+   <!-- Contatos / Redes -->
+   <Annotation>
+      <ID>whatsapp</ID>
+      <Title>WhatsApp</Title>
+      <URL>#whatsapp</URL>
+      <Description>Contato via WhatsApp para pedidos e dúvidas</Description>
    </Annotation>
 
    <Annotation>
-      <Title>Redes Sociais - Instagram</Title>
-      <URL>https://www.instagram.com/linhadotempo.if</URL>
-      <Description>Perfil do projeto Linha do Tempo no Instagram.</Description>
-   </Annotation>
-
-   <!-- Equipe de T.I (todos os nomes encontrados) -->
-   <Annotation>
-      <Title>João Dorneles</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de T.I listada no rodapé/informações da equipe.</Description>
+      <ID>instagram</ID>
+      <Title>Instagram</Title>
+      <URL>#instagram</URL>
+      <Description>Perfil do Instagram da Linha do Tempo</Description>
    </Annotation>
 
    <Annotation>
-      <Title>Wendel Rocha</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de T.I listada no rodapé/informações da equipe.</Description>
+      <ID>facebook</ID>
+      <Title>Facebook</Title>
+      <URL>#facebook</URL>
+      <Description>Perfil do Facebook da Linha do Tempo</Description>
    </Annotation>
 
    <Annotation>
-      <Title>Letícia Soeiro</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de T.I listada no rodapé/informações da equipe.</Description>
+      <ID>tiktok</ID>
+      <Title>TikTok</Title>
+      <URL>#tiktok</URL>
+      <Description>Perfil do TikTok da Linha do Tempo</Description>
    </Annotation>
-
-   <Annotation>
-      <Title>Carolina Coelho</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de T.I listada no rodapé/informações da equipe.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Sara Sousa</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de T.I listada no rodapé/informações da equipe.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Robson Luis</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de T.I listada no rodapé/informações da equipe.</Description>
-   </Annotation>
-
-   <!-- Equipe de Administração (todos os nomes listados no HTML) -->
-   <Annotation>
-      <Title>Abigail Zaíra</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de Administração listada no rodapé.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Elinaldo Rychard</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de Administração listada no rodapé.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Filipy Octávio</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de Administração listada no rodapé.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Jennifer Ramily</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de Administração listada no rodapé.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Kauê Santos</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de Administração listada no rodapé.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Lara Sophia</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de Administração listada no rodapé.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Mariana Melo</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de Administração listada no rodapé.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Nícolas Gabriel</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de Administração listada no rodapé.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Paulo Gabriel</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de Administração listada no rodapé.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Rosa Lidia</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de Administração listada no rodapé.</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>William Wallace</Title>
-      <URL>https://linhadotempo.onrender.com/#contato</URL>
-      <Description>Membro da equipe de Administração listada no rodapé.</Description>
-   </Annotation>
-
-   <!-- Rodapé / marca -->
-   <Annotation>
-      <Title>Linha do Tempo</Title>
-      <URL>https://linhadotempo.onrender.com/</URL>
-      <Description>Marca / nome do projeto — "Linha do Tempo".</Description>
-   </Annotation>
-
-   <Annotation>
-      <Title>Mapa do Site</Title>
-      <URL>https://linhadotempo.onrender.com/</URL>
-      <Description>Links do rodapé e navegação principal (Início, Sobre Nós, Cardápio, Contato,
-         Conta, Jogue).</Description>
-   </Annotation>
-</Annotations>
+</annotations>
