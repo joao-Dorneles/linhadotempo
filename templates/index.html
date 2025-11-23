@@ -479,7 +479,288 @@
 
     </script>
 
-    
+    <!-- MiniSearch (CDN) -->
+    <script type="module">
+        /* ------------- Busca refinada a partir de XML (MiniSearch) ------------- 
+           Cole isso no fim do body. Ajuste XML_URL se necessário.
+        */
+        import MiniSearch from 'https://cdn.skypack.dev/minisearch@6.1.0';
+
+        (async function () {
+            const XML_URL = '/sitemap.xml'; // ajuste para '/static/annotations.xml' ou URL completa se precisar
+            const input = document.querySelector('.buscar');
+            if (!input) return;
+
+            /* === cria dropdown de resultados (UI) === */
+            let resultsBox = document.getElementById('search-results-box');
+            if (!resultsBox) {
+                resultsBox = document.createElement('div');
+                resultsBox.id = 'search-results-box';
+                resultsBox.setAttribute('role', 'listbox');
+                resultsBox.style.cssText = `
+      position: absolute; z-index:9999; background:#fff; border:1px solid #ddd;
+      box-shadow:0 8px 30px rgba(0,0,0,.08); max-height:360px; overflow:auto;
+      width:360px; display:none; border-radius:8px; padding:6px;
+      font-family: inherit;
+    `;
+                document.body.appendChild(resultsBox);
+            }
+
+            function positionResultsBox() {
+                const r = input.getBoundingClientRect();
+                resultsBox.style.left = (window.scrollX + r.left) + 'px';
+                resultsBox.style.top = (window.scrollY + r.bottom + 8) + 'px';
+                // responsivo se ultrapassar largura da tela
+                const maxRight = window.scrollX + document.documentElement.clientWidth - 8;
+                const boxRight = window.scrollX + r.left + resultsBox.offsetWidth;
+                if (boxRight > maxRight) {
+                    resultsBox.style.left = (maxRight - resultsBox.offsetWidth) + 'px';
+                }
+            }
+            window.addEventListener('resize', positionResultsBox);
+            window.addEventListener('scroll', () => { if (resultsBox.style.display !== 'none') positionResultsBox(); });
+
+            /* === carrega e parseia XML (annotations ou sitemap) === */
+            async function loadXml(url) {
+                try {
+                    const res = await fetch(url, { cache: 'no-store' });
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    const text = await res.text();
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(text, 'application/xml');
+
+                    const annotations = Array.from(xml.getElementsByTagName('Annotation'));
+                    if (annotations.length) {
+                        return annotations.map(a => {
+                            const get = t => (a.getElementsByTagName(t)[0]?.textContent || '').trim();
+                            return { id: cryptoRandomId(), title: get('Title') || get('title'), url: get('URL') || get('Loc'), description: get('Description') || '' };
+                        });
+                    }
+
+                    const urls = Array.from(xml.getElementsByTagName('url'));
+                    if (urls.length) {
+                        return urls.map(u => {
+                            const loc = u.getElementsByTagName('loc')[0]?.textContent || '';
+                            const title = u.getElementsByTagName('title')[0]?.textContent || guessTitleFromUrl(loc);
+                            const desc = u.getElementsByTagName('description')[0]?.textContent || '';
+                            return { id: cryptoRandomId(), title: title.trim(), url: loc, description: desc.trim() };
+                        });
+                    }
+
+                    // fallback: pega nodes <page> ou similar
+                    const pages = Array.from(xml.querySelectorAll('page, item'));
+                    if (pages.length) {
+                        return pages.map(p => ({
+                            id: cryptoRandomId(),
+                            title: p.querySelector('title')?.textContent?.trim() || guessTitleFromUrl(XML_URL),
+                            url: p.querySelector('loc, link, url')?.textContent?.trim() || XML_URL,
+                            description: p.querySelector('description')?.textContent?.trim() || ''
+                        }));
+                    }
+
+                    return [];
+                } catch (err) {
+                    console.warn('Erro ao carregar XML:', err);
+                    return [];
+                }
+            }
+
+            function guessTitleFromUrl(url) {
+                try {
+                    const u = new URL(url);
+                    const seg = decodeURIComponent(u.pathname.replace(/\/$/, '').split('/').pop() || u.hostname);
+                    return seg.replace(/[-_]/g, ' ') || url;
+                } catch (e) {
+                    return url;
+                }
+            }
+
+            function cryptoRandomId() {
+                return 'i' + Math.random().toString(36).slice(2, 9);
+            }
+
+            const rawItems = await loadXml(XML_URL);
+
+            // sanitize e dedupe por url+title
+            const seen = new Map();
+            rawItems.forEach(it => {
+                const key = (it.url || '') + '::' + (it.title || '');
+                if (!seen.has(key)) seen.set(key, { ...it, title: it.title || it.url });
+            });
+            const items = Array.from(seen.values());
+
+            if (!items.length) {
+                console.warn('Nenhum item encontrado no XML. Verifique XML_URL e CORS.');
+            }
+
+            /* === cria MiniSearch index === */
+            const mini = new MiniSearch({
+                fields: ['title', 'description'], // campos indexados
+                storeFields: ['title', 'url', 'description'],
+                searchOptions: {
+                    prefix: true,         // permite buscas por prefixo
+                    fuzzy: 0.2            // tolerância a erros (0.2 é leve/fuzzy)
+                }
+            });
+            mini.addAll(items.map((it, i) => ({ id: it.id || i, title: it.title, description: it.description, url: it.url })));
+
+            /* === lógica de busca e UI === */
+            function renderResults(results) {
+                resultsBox.innerHTML = '';
+                if (!results || results.length === 0) {
+                    resultsBox.style.display = 'none';
+                    return;
+                }
+                results.forEach((r, idx) => {
+                    const wrap = document.createElement('div');
+                    wrap.setAttribute('role', 'option');
+                    wrap.dataset.index = idx;
+                    wrap.style.padding = '8px';
+                    wrap.style.borderRadius = '6px';
+                    wrap.style.cursor = 'pointer';
+                    wrap.style.marginBottom = '6px';
+                    wrap.tabIndex = -1;
+
+                    const title = document.createElement('div');
+                    title.style.fontWeight = 600;
+                    title.style.fontSize = '14px';
+                    title.textContent = r.title || r.url;
+
+                    const url = document.createElement('div');
+                    url.style.fontSize = '12px';
+                    url.style.color = '#1a73e8';
+                    url.textContent = stripOrigin(r.url);
+
+                    const desc = document.createElement('div');
+                    desc.style.fontSize = '12px';
+                    desc.style.color = '#666';
+                    desc.style.marginTop = '4px';
+                    desc.textContent = r.description || '';
+
+                    wrap.appendChild(title);
+                    wrap.appendChild(url);
+                    if (r.description) wrap.appendChild(desc);
+
+                    wrap.addEventListener('click', (ev) => {
+                        gotoUrl(r.url);
+                    });
+                    wrap.addEventListener('mouseover', () => highlightIndex(parseInt(wrap.dataset.index)));
+                    resultsBox.appendChild(wrap);
+                });
+
+                resultsBox.style.display = 'block';
+                positionResultsBox();
+                highlightIndex(0);
+            }
+
+            function stripOrigin(u) {
+                try { const o = new URL(u); return (o.pathname + (o.hash || '')).replace(/^\//, ''); }
+                catch (e) { return u; }
+            }
+
+            function gotoUrl(u) {
+                try {
+                    const target = new URL(u, location.href);
+                    if (target.origin === location.origin && target.hash) {
+                        // mesma origem + hash -> smooth scroll se elemento existir
+                        const el = document.querySelector(target.hash);
+                        if (el) {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            // fecha dropdown
+                            resultsBox.style.display = 'none';
+                            return;
+                        }
+                    }
+                    // caso contrário, navega normalmente
+                    location.href = u;
+                } catch (e) {
+                    location.href = u;
+                }
+            }
+
+            // busca refinada usando MiniSearch
+            function doSearch(q) {
+                if (!q) return [];
+                // busca por título/descrição com ranking
+                const msResults = mini.search(q, { prefix: true, fuzzy: 0.2, combineWith: 'AND' });
+                // msResults é array de objetos indexados (id/title/description/url)
+                // fallback: também checa substrings nos items originais (caso mini não ache)
+                const substringMatches = items.filter(it => {
+                    const s = ((it.title || '') + ' ' + (it.description || '') + ' ' + (it.url || '')).toLowerCase();
+                    return s.includes(q.toLowerCase());
+                }).slice(0, 10);
+                // Merge mantendo unicidade por url
+                const combined = [];
+                const seenUrls = new Set();
+                msResults.concat(substringMatches).forEach(r => {
+                    const url = (r.url || r.url) || r.url;
+                    const key = (r.url || r.title || JSON.stringify(r));
+                    if (!seenUrls.has(key)) {
+                        seenUrls.add(key);
+                        combined.push({ title: r.title || r.id || '', url: r.url || r.url || '', description: r.description || '' });
+                    }
+                });
+                return combined.slice(0, 20);
+            }
+
+            // debounce util
+            function debounce(fn, t = 160) { let timer; return function (...a) { clearTimeout(timer); timer = setTimeout(() => fn.apply(this, a), t); }; }
+
+            // keyboard navigation
+            let currentHighlight = -1;
+            function highlightIndex(i) {
+                const options = Array.from(resultsBox.querySelectorAll('[role="option"]'));
+                if (!options.length) return;
+                currentHighlight = (i + options.length) % options.length;
+                options.forEach((opt, j) => {
+                    opt.style.background = (j === currentHighlight) ? '#f3f6ff' : 'transparent';
+                });
+                // aria-activedescendant (optional)
+                input.setAttribute('aria-activedescendant', options[currentHighlight]?.id || '');
+            }
+            function moveHighlight(delta) {
+                const options = Array.from(resultsBox.querySelectorAll('[role="option"]'));
+                if (!options.length) return;
+                highlightIndex(currentHighlight + delta);
+                options[currentHighlight]?.scrollIntoView({ block: 'nearest' });
+            }
+
+            const onInput = debounce(() => {
+                const q = input.value.trim();
+                if (!q) { resultsBox.style.display = 'none'; return; }
+                const results = doSearch(q);
+                renderResults(results);
+            }, 120);
+
+            input.addEventListener('input', onInput);
+            input.addEventListener('focus', onInput);
+
+            // keyboard controls on input
+            input.addEventListener('keydown', (e) => {
+                const isOpen = resultsBox.style.display !== 'none';
+                if (e.key === 'ArrowDown') { e.preventDefault(); if (!isOpen) onInput(); else moveHighlight(1); }
+                else if (e.key === 'ArrowUp') { e.preventDefault(); if (isOpen) moveHighlight(-1); }
+                else if (e.key === 'Enter') {
+                    if (isOpen && currentHighlight >= 0) {
+                        const opt = resultsBox.querySelectorAll('[role="option"]')[currentHighlight];
+                        opt?.click();
+                        e.preventDefault();
+                    } // else: normal submit behavior (if any)
+                } else if (e.key === 'Escape') { resultsBox.style.display = 'none'; }
+            });
+
+            // close when clicking outside
+            document.addEventListener('click', (ev) => {
+                if (!resultsBox.contains(ev.target) && ev.target !== input) resultsBox.style.display = 'none';
+            });
+
+            // helper
+            function stripTrailingHash(u) { try { return u.replace(/#$/, ''); } catch (e) { return u; } }
+
+        })();
+    </script>
+
+
 </body>
 
 </html>
