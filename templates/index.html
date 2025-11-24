@@ -478,277 +478,514 @@
 
     </script>
 
+    <!-- SEARCH - Definitivamente fizemos com auxilio de I.A, e ainda assim deu trabalho :( -->
     <script type="module">
-        import MiniSearch from 'https://cdn.skypack.dev/minisearch@6.1.0';
+        document.addEventListener('DOMContentLoaded', async () => {
+            import('https://cdn.skypack.dev/minisearch@6.1.0').then(({ default: MiniSearch }) => (async () => {
+                // =========== CONFIG ===========
+                const XML_URL = '/static/sitemap.xml';
+                const INPUT_SELECTOR = '.buscar'; // seletor do input
+                const SEARCH_CANDIDATES = [
+                    '.cartao', '.infos-pratos', '.sobre-nos', '.contato', 'footer', 'header', 'main',
+                    '.rodape', '.rodape-desktop', 'h1', 'h2', 'h3', 'p', 'li', 'a'
+                ];
 
-        (async () => {
-            // =========== CONFIG ===========
-            const XML_URL = '/static/sitemap.xml'; // seu sitemap
-            const SEARCH_CANDIDATES = [
-                '.cartao', '.infos-pratos', '.sobre-nos', '.contato', 'footer', 'header', 'main',
-                '.rodape', '.rodape-desktop', 'h1', 'h2', 'h3', 'p', 'li', 'a'
-            ];
+                // Inline fallback com o XML
+                const INLINE_XML = `<?xml version="1.0" encoding="UTF-8"?>
+<annotations>
+    <!-- Seções principais -->
+    <Annotation>
+        <ID>inicio</ID>
+        <Title>Início</Title>
+        <URL>#inicio</URL>
+        Description>Seção inicial da página com boas-vindas e banner</Description>
+    Annotation>
 
-            const input = document.querySelector('.buscar');
-            if (!input) return console.warn('Input .buscar não encontrado.');
+    Annotation>
+        <ID>sobre-nos</ID>
+        <Title>Sobre Nós</Title>
+        <URL>#sobre-nos</URL>
+        Description>Seção sobre a história e a localização da Linha do Tempo</Description>
+        </Annotation>
 
-            // =========== UI: results box ===========
-            let resultsBox = document.getElementById('search-results-box');
-            if (!resultsBox) {
-                resultsBox = document.createElement('div');
-                resultsBox.id = 'search-results-box';
-                resultsBox.setAttribute('role', 'listbox');
-                resultsBox.style.cssText = `
-            position: absolute; z-index:99999; background:#fff; border:1px solid #e6e6e6;
-            box-shadow:0 8px 30px rgba(0,0,0,.08); max-height:420px; overflow:auto;
-            width:380px; display:none; border-radius:10px; padding:6px; font-family:inherit;
-        `;
-                document.body.appendChild(resultsBox);
-            }
+    <Annotation>
+        <ID>contatos</ID>
+        <Title>Contato</Title>
+        <URL>#contatos</URL>
+        <Description>Formas de entrar em contato e redes sociais</Description>
+    </Annotation>
 
-            function positionResultsBox() {
-                const r = input.getBoundingClientRect();
-                const left = window.scrollX + r.left;
-                const top = window.scrollY + r.bottom + 8;
-                resultsBox.style.left = left + 'px';
-                resultsBox.style.top = top + 'px';
-                const maxRight = window.scrollX + document.documentElement.clientWidth - 8;
-                const boxRight = left + resultsBox.offsetWidth;
-                if (boxRight > maxRight) resultsBox.style.left = (maxRight - resultsBox.offsetWidth) + 'px';
-            }
-            window.addEventListener('resize', positionResultsBox);
-            window.addEventListener('scroll', () => { if (resultsBox.style.display !== 'none') positionResultsBox(); });
+    <!-- Pratos -->
+    Annotation>
+        <ID>x-tudo</ID>
+        <Title>X-Tudo</Title>
+        <URL>#x-tudo</URL>
+        <Description>Prato X-Tudo, preço R$29,99</Description>
+    </Annotation>
 
-            // =========== XML loader ===========
-            async function loadAnnotations() {
-                try {
-                    const res = await fetch(XML_URL, { cache: 'no-store' });
-                    if (!res.ok) throw new Error('HTTP ' + res.status);
-                    const text = await res.text();
-                    const parser = new DOMParser();
-                    const xml = parser.parseFromString(text, 'application/xml');
+    <Annotation>
+        <ID>coxinha</ID>
+        Title>Coxinha</Title>
+        <URL>#coxinha</URL>
+        <Description>Prato Coxinha, preço R$39,99</Description>
+    Annotation>
 
-                    const anns = Array.from(xml.getElementsByTagName('Annotation'));
-                    if (anns.length) return anns.map(a => {
-                        const get = t => (a.getElementsByTagName(t)[0]?.textContent || '').trim();
-                        return {
-                            id: cryptoRandomId(),
-                            title: get('Title') || get('title'),
-                            url: get('URL') || get('Loc') || '',
-                            description: get('Description') || ''
-                        };
-                    });
+    Annotation>
+        ID>sanduiche-frango</ID>
+        <Title>Sanduiche de Frango</Title>
+        <URL>#sanduiche-frango</URL>
+        Description>Sanduiche de Frango, preço R$49,99</Description>
+    </Annotation>
 
-                    const urls = Array.from(xml.getElementsByTagName('url'));
-                    if (urls.length) return urls.map(u => {
-                        const loc = u.getElementsByTagName('loc')[0]?.textContent || '';
-                        const title = u.getElementsByTagName('title')[0]?.textContent || guessTitleFromUrl(loc);
-                        const desc = u.getElementsByTagName('description')[0]?.textContent || '';
-                        return { id: cryptoRandomId(), title: title.trim(), url: loc, description: desc.trim() };
-                    });
+    <Annotation>
+        <ID>sanduiche-presunto</ID>
+        <Title>Sanduiche de Presunto</Title>
+        <URL>#sanduiche-presunto</URL>
+        <Description>Sanduiche de Presunto, preço R$49,99</Description>
+    </Annotation>
 
-                    const pages = Array.from(xml.querySelectorAll('page, item'));
-                    if (pages.length) return pages.map(p => ({
-                        id: cryptoRandomId(),
-                        title: p.querySelector('title')?.textContent?.trim() || guessTitleFromUrl(XML_URL),
-                        url: p.querySelector('loc, link, url')?.textContent?.trim() || XML_URL,
-                        description: p.querySelector('description')?.textContent?.trim() || ''
-                    }));
+    <Annotation>
+        <ID>cachorro-quente</ID>
+        <Title>Cachorro-Quente</Title>
+        <URL>#cachorro-quente</URL>
+        <Description>Cachorro-Quente, preço R$49,99</Description>
+    </Annotation>
 
-                    return [];
-                } catch (err) {
-                    console.warn('Erro ao carregar XML:', err);
-                    return [];
+    <Annotation>
+        <ID>pizza-brotinho</ID>
+        <Title>Pizza Brotinho</Title>
+        <URL>#pizza-brotinho</URL>
+        Description>Pizza Brotinho, preço R$49,99</Description>
+    </Annotation>
+
+    <Annotation>
+        ID>batata-frita</ID>
+        <Title>Batata Frita</Title>
+        <URL>#batata-frita</URL>
+        <Description>Batata Frita, preço R$49,99</Description>
+    </Annotation>
+
+    Annotation>
+        <ID>bolo-chocolate</ID>
+        <Title>Bolo de Chocolate</Title>
+        <URL>#bolo-chocolate</URL>
+        <Description>Bolo de Chocolate, preço R$49,99</Description>
+    </Annotation>
+
+    <Annotation>
+        <ID>bolo-leite</ID>
+        <Title>Bolo de Leite</Title>
+        <URL>#bolo-leite</URL>
+        <Description>Bolo de Leite, preço R$49,99</Description>
+    </Annotation>
+
+    <Annotation>
+        <ID>bolo-milho</ID>
+        <Title>Bolo de Milho</Title>
+        <URL>#bolo-milho</URL>
+        <Description>Bolo de Milho, preço R$49,99</Description>
+    </Annotation>
+
+    <Annotation>
+        <ID>pudim</ID>
+        <Title>Pudim</Title>
+        <URL>#pudim</URL>
+        <Description>Pudim, preço R$49,99</Description>
+    </Annotation>
+
+    <!-- Timeline / História -->
+    <Annotation>
+        <ID>primeiros-dias</ID>
+        <Title>Primeiros Dias</Title>
+        <URL>#primeiros-dias</URL>
+        <Description>Primeiros passos dos sócios na criação da empresa</Description>
+    </Annotation>
+
+    <Annotation>
+        <ID>meses-depois</ID>
+        <Title>Alguns Meses Mais Tarde</Title>
+        <URL>#meses-depois</URL>
+        <Description>Decisões sobre o negócio temático e lanchonete retrô</Description>
+    </Annotation>
+
+    <Annotation>
+        <ID>localizacao</ID>
+        <Title>Localização</Title>
+        <URL>#localizacao</URL>
+        <Description>Localização da Linha do Tempo, cidade de Rosário, MA</Description>
+    </Annotation>
+
+    <Annotation>
+        <ID>nosso-espaco</ID>
+        <Title>Nosso Espaço</Title>
+        <URL>#nosso-espaco</URL>
+        Description>Ambiente decorado, música de fundo e espaço kids</Description>
+    </Annotation>
+
+    <!-- Contatos / Redes -->
+    <Annotation>
+        <ID>whatsapp</ID>
+        <Title>WhatsApp</Title>
+        <URL>#whatsapp</URL>
+        <Description>Contato via WhatsApp para pedidos e dúvidas</Description>
+    </Annotation>
+
+    <Annotation>
+        <ID>instagram</ID>
+        <Title>Instagram</Title>
+        <URL>#instagram</URL>
+        <Description>Perfil do Instagram da Linha do Tempo</Description>
+    </Annotation>
+
+    <Annotation>
+        <ID>facebook</ID>
+        <Title>Facebook</Title>
+        <URL>#facebook</URL>
+        <Description>Perfil do Facebook da Linha do Tempo</Description>
+    </Annotation>
+
+    <Annotation>
+        <ID>tiktok</ID>
+        <Title>TikTok</Title>
+        <URL>#tiktok</URL>
+        <Description>Perfil do TikTok da Linha do Tempo</Description>
+    </Annotation>
+</annotations>`;
+
+                const input = document.querySelector(INPUT_SELECTOR);
+                if (!input) return console.warn(`Input ${INPUT_SELECTOR} não encontrado.`);
+
+                // =========== UI: results box ===========
+                let resultsBox = document.getElementById('search-results-box');
+                if (!resultsBox) {
+                    resultsBox = document.createElement('div');
+                    resultsBox.id = 'search-results-box';
+                    resultsBox.setAttribute('role', 'listbox');
+                    resultsBox.setAttribute('aria-hidden', 'true');
+                    resultsBox.style.cssText = `
+                position: absolute; z-index:99999; background:#fff; border:1px solid #e6e6e6;
+                box-shadow:0 8px 30px rgba(0,0,0,.08); max-height:420px; overflow:auto;
+                display:none; border-radius:10px; padding:6px; font-family:inherit;
+            `;
+                    document.body.appendChild(resultsBox);
                 }
-            }
 
-            function guessTitleFromUrl(url) {
-                try {
-                    const u = new URL(url);
-                    const seg = decodeURIComponent(u.pathname.replace(/\/$/, '').split('/').pop() || u.hostname);
-                    return seg.replace(/[-_]/g, ' ') || url;
-                } catch (e) { return url; }
-            }
-            function cryptoRandomId() { return 'i' + Math.random().toString(36).slice(2, 9); }
-
-            const rawItems = await loadAnnotations();
-            if (!rawItems.length) console.warn('Nenhum item carregado do XML.');
-
-            // dedupe
-            const seen = new Map();
-            rawItems.forEach(it => {
-                const key = (it.url || '') + '::' + (it.title || '');
-                if (!seen.has(key)) seen.set(key, { ...it, title: it.title || it.url });
-            });
-            const items = Array.from(seen.values());
-
-            // =========== MiniSearch ===========
-            const mini = new MiniSearch({
-                fields: ['title', 'description'],
-                storeFields: ['title', 'url', 'description'],
-                searchOptions: { prefix: true, fuzzy: 0.2 }
-            });
-            mini.addAll(items.map((it, i) => ({ id: it.id || i, title: it.title, description: it.description, url: it.url })));
-
-            // =========== helpers ===========
-            const normalize = s => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-
-            function findElementForItem(it) {
-                try {
-                    if (it.url) {
-                        const u = new URL(it.url, location.href);
-                        if (u.hash) {
-                            const elByHash = document.querySelector(u.hash);
-                            if (elByHash) return elByHash;
-                        }
-                    }
-                } catch (e) { }
-
-                const textNorm = normalize(it.title || it.personName || '');
-                if (!textNorm) return null;
-
-                const candidates = Array.from(document.querySelectorAll(SEARCH_CANDIDATES.join(',')))
-                    .filter(el => el.innerText && normalize(el.innerText).includes(textNorm));
-
-                if (candidates.length) {
-                    let bestMatch = candidates[0];
-                    let maxScore = 0;
-                    candidates.forEach(el => {
-                        const elText = normalize(el.innerText);
-                        const score = textNorm.split(' ').filter(w => elText.includes(w)).length;
-                        if (score > maxScore) { maxScore = score; bestMatch = el; }
-                    });
-                    return bestMatch;
+                function updateResultsWidth() {
+                    const w = Math.max(320, input.offsetWidth || 320);
+                    resultsBox.style.width = w + 'px';
                 }
 
-                const anchors = Array.from(document.querySelectorAll('a'));
-                for (const a of anchors) {
-                    if (a.href && normalize(a.href).includes(textNorm)) return a;
+                function positionResultsBox() {
+                    updateResultsWidth();
+                    const r = input.getBoundingClientRect();
+                    const left = window.scrollX + r.left;
+                    const top = window.scrollY + r.bottom + 8;
+                    resultsBox.style.left = left + 'px';
+                    resultsBox.style.top = top + 'px';
+                    const maxRight = window.scrollX + document.documentElement.clientWidth - 8;
+                    const boxRight = left + resultsBox.offsetWidth;
+                    if (boxRight > maxRight) resultsBox.style.left = (maxRight - resultsBox.offsetWidth) + 'px';
+                }
+
+                window.addEventListener('resize', positionResultsBox);
+                window.addEventListener('scroll', () => { if (resultsBox.style.display !== 'none') positionResultsBox(); });
+
+                // =========== XML loader ===========
+                async function loadAnnotations() {
+                    // tenta buscar o XML; se falhar, usa INLINE_XML
+                    let text = null;
                     try {
-                        const hrefHash = new URL(a.href, location.href).hash;
-                        if (hrefHash) {
-                            const el = document.querySelector(hrefHash);
-                            if (el && normalize(el.innerText).includes(textNorm)) return el;
+                        const res = await fetch(XML_URL, { cache: 'no-store' });
+                        if (res.ok) {
+                            text = await res.text();
+                        } else {
+                            console.warn('Fetch XML retornou status', res.status, '- usando INLINE_XML');
                         }
-                    } catch (e) { }
-                }
-
-                return null;
-            }
-
-            function stripOrigin(u) {
-                try { const o = new URL(u); return (o.pathname + (o.hash || '')).replace(/^\//, ''); }
-                catch (e) { return u; }
-            }
-
-            function renderResults(results) {
-                resultsBox.innerHTML = '';
-                if (!results || !results.length) { resultsBox.style.display = 'none'; return; }
-
-                results.slice(0, 20).forEach((r, idx) => {
-                    const wrap = document.createElement('div');
-                    wrap.setAttribute('role', 'option');
-                    wrap.dataset.index = idx;
-                    wrap.style.padding = '8px';
-                    wrap.style.borderRadius = '8px';
-                    wrap.style.cursor = 'pointer';
-                    wrap.style.marginBottom = '6px';
-                    wrap.tabIndex = -1;
-
-                    const title = document.createElement('div');
-                    title.style.fontWeight = 700; title.style.fontSize = '14px';
-                    title.textContent = r.title || r.url;
-
-                    const url = document.createElement('div');
-                    url.style.fontSize = '12px'; url.style.color = '#1a73e8';
-                    url.textContent = stripOrigin(r.url || '');
-
-                    const desc = document.createElement('div');
-                    desc.style.fontSize = '12px'; desc.style.color = '#666'; desc.style.marginTop = '4px';
-                    desc.textContent = r.description || '';
-
-                    wrap.appendChild(title);
-                    if (r.url) wrap.appendChild(url);
-                    if (r.description) wrap.appendChild(desc);
-
-                    wrap.addEventListener('click', () => onResultClick(r));
-                    wrap.addEventListener('mouseover', () => highlightIndex(parseInt(wrap.dataset.index)));
-                    resultsBox.appendChild(wrap);
-                });
-
-                resultsBox.style.display = 'block';
-                positionResultsBox();
-                highlightIndex(0);
-            }
-
-            function onResultClick(r) {
-                const foundEl = findElementForItem(r);
-                if (foundEl) {
-                    resultsBox.style.display = 'none';
-                    foundEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    const old = foundEl.style.boxShadow;
-                    foundEl.style.boxShadow = '0 0 0 6px rgba(255,213,79,0.45)';
-                    setTimeout(() => { foundEl.style.boxShadow = old || ''; }, 900);
-                    return;
-                }
-                try { location.href = r.url; } catch (e) { window.open(r.url, '_self'); }
-            }
-
-            function doSearch(q) {
-                if (!q) return [];
-                const msResults = mini.search(q, { prefix: true, fuzzy: 0.2, combineWith: 'AND' });
-                const substringMatches = items.filter(it => {
-                    const s = ((it.title || '') + ' ' + (it.description || '') + ' ' + (it.url || '')).toLowerCase();
-                    return s.includes(q.toLowerCase());
-                }).slice(0, 10);
-                const combined = [];
-                const seenKeys = new Set();
-                msResults.concat(substringMatches).forEach(r => {
-                    const key = (r.url || r.title || JSON.stringify(r));
-                    if (!seenKeys.has(key)) { seenKeys.add(key); combined.push({ title: r.title, url: r.url, description: r.description }); }
-                });
-                return combined.slice(0, 20);
-            }
-
-            function debounce(fn, t = 140) { let timer; return (...a) => { clearTimeout(timer); timer = setTimeout(() => fn.apply(this, a), t); }; }
-
-            let currentHighlight = -1;
-            function highlightIndex(i) {
-                const options = Array.from(resultsBox.querySelectorAll('[role="option"]'));
-                if (!options.length) return;
-                currentHighlight = (i + options.length) % options.length;
-                options.forEach((opt, j) => opt.style.background = (j === currentHighlight) ? '#f3f6ff' : 'transparent');
-                options[currentHighlight]?.scrollIntoView({ block: 'nearest' });
-            }
-            function moveHighlight(delta) { const options = Array.from(resultsBox.querySelectorAll('[role="option"]')); if (!options.length) return; highlightIndex(currentHighlight + delta); }
-
-            const onInput = debounce(() => {
-                const q = input.value.trim();
-                if (!q) { resultsBox.style.display = 'none'; return; }
-                const results = doSearch(q);
-                renderResults(results);
-            }, 120);
-
-            input.addEventListener('input', onInput);
-            input.addEventListener('focus', onInput);
-
-            input.addEventListener('keydown', (e) => {
-                const isOpen = resultsBox.style.display !== 'none';
-                if (e.key === 'ArrowDown') { e.preventDefault(); if (!isOpen) onInput(); else moveHighlight(1); }
-                else if (e.key === 'ArrowUp') { e.preventDefault(); if (isOpen) moveHighlight(-1); }
-                else if (e.key === 'Enter') {
-                    if (isOpen && currentHighlight >= 0) {
-                        const opt = resultsBox.querySelectorAll('[role="option"]')[currentHighlight];
-                        opt?.click();
-                        e.preventDefault();
+                    } catch (err) {
+                        console.warn('Erro no fetch do XML, usando INLINE_XML:', err);
                     }
-                } else if (e.key === 'Escape') { resultsBox.style.display = 'none'; }
-            });
+                    if (!text) text = INLINE_XML;
 
-            document.addEventListener('click', (ev) => { if (!resultsBox.contains(ev.target) && ev.target !== input) resultsBox.style.display = 'none'; });
+                    try {
+                        const parser = new DOMParser();
+                        const xml = parser.parseFromString(text, 'application/xml');
 
-            positionResultsBox();
-        })();
+                        // procura por elementos <Annotation>
+                        const anns = Array.from(xml.getElementsByTagName('Annotation'));
+                        if (anns.length) {
+                            return anns.map(a => {
+                                const getText = (tag) => (a.getElementsByTagName(tag)[0]?.textContent || '').trim();
+                                const xmlId = getText('ID') || '';
+                                const urlRaw = getText('URL') || '';
+                                // se não tiver URL, mas tiver ID, cria URL como #id
+                                const url = urlRaw || (xmlId ? `#${xmlId}` : '');
+                                return {
+                                    docId: cryptoRandomId(),     // id interno para o MiniSearch
+                                    xmlId: xmlId,               // o ID do XML (útil para rolar por id)
+                                    title: getText('Title') || getText('title') || (xmlId || url),
+                                    url: url,
+                                    description: getText('Description') || ''
+                                };
+                            });
+                        }
+
+                        // fallback: busca por <url> ou <page>
+                        const urls = Array.from(xml.getElementsByTagName('url'));
+                        if (urls.length) return urls.map(u => {
+                            const loc = u.getElementsByTagName('loc')[0]?.textContent || '';
+                            const title = u.getElementsByTagName('title')[0]?.textContent || guessTitleFromUrl(loc);
+                            const desc = u.getElementsByTagName('description')[0]?.textContent || '';
+                            return { docId: cryptoRandomId(), xmlId: '', title: title.trim(), url: loc, description: desc.trim() };
+                        });
+
+                        const pages = Array.from(xml.querySelectorAll('page, item'));
+                        if (pages.length) return pages.map(p => ({
+                            docId: cryptoRandomId(),
+                            xmlId: '',
+                            title: p.querySelector('title')?.textContent?.trim() || guessTitleFromUrl(XML_URL),
+                            url: p.querySelector('loc, link, url')?.textContent?.trim() || XML_URL,
+                            description: p.querySelector('description')?.textContent?.trim() || ''
+                        }));
+
+                        return [];
+                    } catch (err) {
+                        console.warn('Erro ao parsear XML:', err);
+                        return [];
+                    }
+                }
+
+                function guessTitleFromUrl(url) {
+                    try {
+                        const u = new URL(url, location.href);
+                        const seg = decodeURIComponent(u.pathname.replace(/\/$/, '').split('/').pop() || u.hostname);
+                        return seg.replace(/[-_]/g, ' ') || url;
+                    } catch (e) { return url; }
+                }
+                function cryptoRandomId() { return 'i' + Math.random().toString(36).slice(2, 9); }
+
+                const rawItems = await loadAnnotations();
+                if (!rawItems.length) console.warn('Nenhum item carregado do XML.');
+
+                // dedupe e normalização
+                const seen = new Map();
+                rawItems.forEach(it => {
+                    const key = (it.url || '') + '::' + (it.title || '');
+                    if (!seen.has(key)) seen.set(key, { ...it, title: it.title || it.url });
+                });
+                const items = Array.from(seen.values());
+
+                // =========== MiniSearch ===========
+                const mini = new MiniSearch({
+                    fields: ['title', 'description'],
+                    storeFields: ['title', 'url', 'description', 'xmlId'],
+                    searchOptions: { prefix: true }
+                });
+                mini.addAll(items.map((it, i) => ({
+                    id: it.docId || i,
+                    title: it.title || '',
+                    description: it.description || '',
+                    url: it.url || '',
+                    xmlId: it.xmlId || ''
+                })));
+
+                // =========== helpers ===========
+                const normalize = s => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+                // tenta localizar o elemento na página correspondente ao resultado:
+                // 1) se o item tiver xmlId e houver element com esse id -> retorna esse elemento
+                // 2) se url tiver hash -> seleciona pelo hash
+                // 3) procura por texto que combine com o título nas SEARCH_CANDIDATES
+                // 4) procura por <a> que contenha href apontando para o hash
+                function findElementForItem(it) {
+                    try {
+                        if (it.xmlId) {
+                            const byId = document.getElementById(it.xmlId);
+                            if (byId) return byId;
+                        }
+                        if (it.url) {
+                            try {
+                                // se url for tipo "#algo" => seleciona
+                                if (it.url.startsWith('#')) {
+                                    const el = document.querySelector(it.url);
+                                    if (el) return el;
+                                } else {
+                                    const u = new URL(it.url, location.href);
+                                    if (u.hash) {
+                                        const elByHash = document.querySelector(u.hash);
+                                        if (elByHash) return elByHash;
+                                    }
+                                }
+                            } catch (e) { /* ignore */ }
+                        }
+                    } catch (e) { /* ignore */ }
+
+                    const textNorm = normalize(it.title || it.description || '');
+                    if (!textNorm) return null;
+
+                    const candidates = Array.from(document.querySelectorAll(SEARCH_CANDIDATES.join(',')))
+                        .filter(el => el.innerText && normalize(el.innerText).includes(textNorm));
+
+                    if (candidates.length) {
+                        let bestMatch = candidates[0];
+                        let maxScore = 0;
+                        candidates.forEach(el => {
+                            const elText = normalize(el.innerText);
+                            const score = textNorm.split(/\s+/).filter(w => w && elText.includes(w)).length;
+                            if (score > maxScore) { maxScore = score; bestMatch = el; }
+                        });
+                        return bestMatch;
+                    }
+
+                    const anchors = Array.from(document.querySelectorAll('a'));
+                    for (const a of anchors) {
+                        if (a.href && normalize(a.href).includes(textNorm)) return a;
+                        try {
+                            const hrefHash = new URL(a.href, location.href).hash;
+                            if (hrefHash) {
+                                const el = document.querySelector(hrefHash);
+                                if (el && normalize(el.innerText).includes(textNorm)) return el;
+                            }
+                        } catch (e) { }
+                    }
+
+                    return null;
+                }
+
+                function stripOrigin(u) {
+                    try {
+                        if (!u) return '';
+                        // hash-only?
+                        if (u.startsWith('#')) return u.replace(/^#/, '');
+                        const o = new URL(u, location.href);
+                        return (o.pathname + (o.hash || '')).replace(/^\//, '');
+                    } catch (e) { return u; }
+                }
+
+                function renderResults(results) {
+                    resultsBox.innerHTML = '';
+                    if (!results || !results.length) { resultsBox.style.display = 'none'; resultsBox.setAttribute('aria-hidden', 'true'); return; }
+
+                    results.slice(0, 20).forEach((r, idx) => {
+                        const wrap = document.createElement('div');
+                        wrap.setAttribute('role', 'option');
+                        wrap.dataset.index = idx;
+                        wrap.style.padding = '8px';
+                        wrap.style.borderRadius = '8px';
+                        wrap.style.cursor = 'pointer';
+                        wrap.style.marginBottom = '6px';
+                        wrap.tabIndex = -1;
+
+                        const title = document.createElement('div');
+                        title.style.fontWeight = 700; title.style.fontSize = '14px';
+                        title.textContent = r.title || r.url || 'resultado';
+
+                        const url = document.createElement('div');
+                        url.style.fontSize = '12px'; url.style.color = '#1a73e8';
+                        url.textContent = r.url ? stripOrigin(r.url) : '';
+
+                        const desc = document.createElement('div');
+                        desc.style.fontSize = '12px'; desc.style.color = '#666'; desc.style.marginTop = '4px';
+                        desc.textContent = r.description || '';
+
+                        wrap.appendChild(title);
+                        if (r.url) wrap.appendChild(url);
+                        if (r.description) wrap.appendChild(desc);
+
+                        wrap.addEventListener('click', () => onResultClick(r));
+                        wrap.addEventListener('mouseover', () => highlightIndex(parseInt(wrap.dataset.index)));
+                        resultsBox.appendChild(wrap);
+                    });
+
+                    resultsBox.style.display = 'block';
+                    resultsBox.setAttribute('aria-hidden', 'false');
+                    positionResultsBox();
+                    highlightIndex(0);
+                }
+
+                function onResultClick(r) {
+                    const foundEl = findElementForItem(r);
+                    if (foundEl) {
+                        resultsBox.style.display = 'none';
+                        resultsBox.setAttribute('aria-hidden', 'true');
+                        // rola até o elemento
+                        foundEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        const old = foundEl.style.boxShadow;
+                        foundEl.style.boxShadow = '0 0 0 6px rgba(255,213,79,0.45)';
+                        setTimeout(() => { foundEl.style.boxShadow = old || ''; }, 900);
+                        return;
+                    }
+                    if (r.url) {
+                        try { location.href = r.url; } catch (e) { window.open(r.url, '_self'); }
+                    }
+                }
+
+                function doSearch(q) {
+                    q = (q || '').trim();
+                    if (!q) return [];
+                    let msResults = mini.search(q, { prefix: true, fuzzy: 0.2, combineWith: 'AND' }) || [];
+                    msResults = msResults.map(r => ({ title: r.title || '', url: r.url || '', description: r.description || '', xmlId: r.xmlId || '' }));
+
+                    const substringMatches = items.filter(it => {
+                        const s = ((it.title || '') + ' ' + (it.description || '') + ' ' + (it.url || '')).toLowerCase();
+                        return s.includes(q.toLowerCase());
+                    }).slice(0, 10).map(it => ({ title: it.title, url: it.url, description: it.description, xmlId: it.xmlId }));
+
+                    const combined = [];
+                    const seenKeys = new Set();
+                    msResults.concat(substringMatches).forEach(r => {
+                        const key = (r.url || r.title || JSON.stringify(r));
+                        if (!seenKeys.has(key)) { seenKeys.add(key); combined.push(r); }
+                    });
+                    return combined.slice(0, 20);
+                }
+
+                function debounce(fn, t = 140) { let timer; return (...a) => { clearTimeout(timer); timer = setTimeout(() => fn.apply(this, a), t); }; }
+
+                let currentHighlight = -1;
+                function highlightIndex(i) {
+                    const options = Array.from(resultsBox.querySelectorAll('[role="option"]'));
+                    if (!options.length) return;
+                    currentHighlight = (i + options.length) % options.length;
+                    options.forEach((opt, j) => opt.style.background = (j === currentHighlight) ? '#f3f6ff' : 'transparent');
+                    options[currentHighlight]?.scrollIntoView({ block: 'nearest' });
+                }
+                function moveHighlight(delta) { const options = Array.from(resultsBox.querySelectorAll('[role="option"]')); if (!options.length) return; highlightIndex(currentHighlight + delta); }
+
+                const onInput = debounce(() => {
+                    const q = input.value.trim();
+                    if (!q) { resultsBox.style.display = 'none'; resultsBox.setAttribute('aria-hidden', 'true'); return; }
+                    const results = doSearch(q);
+                    renderResults(results);
+                }, 120);
+
+                input.addEventListener('input', onInput);
+                input.addEventListener('focus', onInput);
+
+                input.addEventListener('keydown', (e) => {
+                    const isOpen = resultsBox.style.display !== 'none';
+                    if (e.key === 'ArrowDown') { e.preventDefault(); if (!isOpen) onInput(); else moveHighlight(1); }
+                    else if (e.key === 'ArrowUp') { e.preventDefault(); if (isOpen) moveHighlight(-1); }
+                    else if (e.key === 'Enter') {
+                        if (isOpen && currentHighlight >= 0) {
+                            const opt = resultsBox.querySelectorAll('[role="option"]')[currentHighlight];
+                            opt?.click();
+                            e.preventDefault();
+                        }
+                    } else if (e.key === 'Escape') { resultsBox.style.display = 'none'; resultsBox.setAttribute('aria-hidden', 'true'); }
+                });
+
+                document.addEventListener('click', (ev) => {
+                    if (!resultsBox.contains(ev.target) && ev.target !== input) {
+                        resultsBox.style.display = 'none';
+                        resultsBox.setAttribute('aria-hidden', 'true');
+                    }
+                });
+
+                // posição inicial
+                positionResultsBox();
+
+            })()).catch(err => console.error('Erro import MiniSearch:', err));
+        });
     </script>
 
     <!-- estilo do dropdown -->
