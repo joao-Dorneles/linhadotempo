@@ -2069,6 +2069,10 @@ footer {
 }
 
 @media (min-width: 1214px) {
+    .nav-bar {
+        width: 890px;
+    }
+    
     .sobre-nos {
         height: 2730px;
     }
@@ -2133,6 +2137,12 @@ footer {
     }
 }
 
+@media (min-width: 1350px) {
+    .nav-bar {
+        width: 1030px;
+    }
+}
+
 @media (min-width: 1400px) {
     .nav-bar {
         width: 1080px;
@@ -2180,6 +2190,18 @@ footer {
     }
 }
 
+@media (min-width: 1430px) {
+    .nav-bar {
+        width: 1110px;
+    }
+}
+
+@media (min-width: 1470px) {
+    .nav-bar {
+        width: 1150px;
+    }
+}
+
 @media (min-width: 1500px) {
     .nav-bar {
         width: 1180px;
@@ -2219,6 +2241,10 @@ footer {
 }
 
 @media (min-width: 1540px) {
+    .nav-bar {
+        width: 1220px;
+    }
+
     .titulo-carrossel {
         top: 1150px;
     }
