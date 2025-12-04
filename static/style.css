@@ -641,6 +641,10 @@ main {
     flex-direction: column;
 }
 
+.link-admin {
+    margin: 0;
+}
+
 .logo-rodape {
     width: 150px;
     margin-top: 20px;
