@@ -22,82 +22,12 @@
       <Description>Formas de entrar em contato e redes sociais</Description>
    </Annotation>
 
-   <!-- Pratos -->
+   <!-- categorias -->
    <Annotation>
-      <ID>x-tudo</ID>
-      <Title>X-Tudo</Title>
-      <URL>#x-tudo</URL>
-      <Description>Prato X-Tudo, preço R$29,99</Description>
-   </Annotation>
-
-   <Annotation>
-      <ID>coxinha</ID>
-      <Title>Coxinha</Title>
-      <URL>#coxinha</URL>
-      <Description>Prato Coxinha, preço R$39,99</Description>
-   </Annotation>
-
-   <Annotation>
-      <ID>sanduiche-frango</ID>
-      <Title>Sanduiche de Frango</Title>
-      <URL>#sanduiche-frango</URL>
-      <Description>Sanduiche de Frango, preço R$49,99</Description>
-   </Annotation>
-
-   <Annotation>
-      <ID>sanduiche-presunto</ID>
-      <Title>Sanduiche de Presunto</Title>
-      <URL>#sanduiche-presunto</URL>
-      <Description>Sanduiche de Presunto, preço R$49,99</Description>
-   </Annotation>
-
-   <Annotation>
-      <ID>cachorro-quente</ID>
-      <Title>Cachorro-Quente</Title>
-      <URL>#cachorro-quente</URL>
-      <Description>Cachorro-Quente, preço R$49,99</Description>
-   </Annotation>
-
-   <Annotation>
-      <ID>pizza-brotinho</ID>
-      <Title>Pizza Brotinho</Title>
-      <URL>#pizza-brotinho</URL>
-      <Description>Pizza Brotinho, preço R$49,99</Description>
-   </Annotation>
-
-   <Annotation>
-      <ID>batata-frita</ID>
-      <Title>Batata Frita</Title>
-      <URL>#batata-frita</URL>
-      <Description>Batata Frita, preço R$49,99</Description>
-   </Annotation>
-
-   <Annotation>
-      <ID>bolo-chocolate</ID>
-      <Title>Bolo de Chocolate</Title>
-      <URL>#bolo-chocolate</URL>
-      <Description>Bolo de Chocolate, preço R$49,99</Description>
-   </Annotation>
-
-   <Annotation>
-      <ID>bolo-leite</ID>
-      <Title>Bolo de Leite</Title>
-      <URL>#bolo-leite</URL>
-      <Description>Bolo de Leite, preço R$49,99</Description>
-   </Annotation>
-
-   <Annotation>
-      <ID>bolo-milho</ID>
-      <Title>Bolo de Milho</Title>
-      <URL>#bolo-milho</URL>
-      <Description>Bolo de Milho, preço R$49,99</Description>
-   </Annotation>
-
-   <Annotation>
-      <ID>pudim</ID>
-      <Title>Pudim</Title>
-      <URL>#pudim</URL>
-      <Description>Pudim, preço R$49,99</Description>
+      <ID>categoria</ID>
+      <Title>Categorias</Title>
+      <URL>#categoria</URL>
+      <Description>categoria, carrossel</Description>
    </Annotation>
 
    <!-- Timeline / História -->

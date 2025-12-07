@@ -30,7 +30,7 @@
                     <li><a class="a-menu-burguer" href="#inicio">Início</a></li>
                     <li><a class="a-menu-burguer" href="#sobre-nos">Sobre Nós</a></li>
                     <li><a class="a-menu-burguer" href="https://usercenterlt.onrender.com/cardapio">Cardápio</a></li>
-                    <li><a class="a-menu-burguer" href="#contato">Contato</a></li>
+                    <li><a class="a-menu-burguer" href="#contatos">Contato</a></li>
                     <li><a class="a-menu-burguer" href="https://usercenterlt.onrender.com/conta">Conta</a></li>
                 </ul>
             </div>
@@ -69,18 +69,21 @@
 
         <!-- carrossel -->
 
-        <h2 class="titulo-carrossel">Nossas Categorias</h2>
+        <h2 id="categoria" class="titulo-carrossel">Nossas Categorias</h2>
 
         <div class="carrossel">
             <div class="faixa" id="faixa">
                 <!-- clones -->
                 <div id="lanches" class="cartao cartao1">
+                    <a href="https://usercenterlt.onrender.com/cardapio#secao-lanches" class="categorias"></a>
                     <img class="img-carrossel" src="../static/images/general/lanches.png" alt="lanches">
                 </div>
-                <div id="lanches" class="cartao cartao2">
+                <div id="sobremesas" class="cartao cartao2">
+                    <a href="https://usercenterlt.onrender.com/cardapio#secao-sobremesas" class="categorias"></a>
                     <img class="img-carrossel" src="../static/images/general/sobremesas.png" alt="sobremesas">
                 </div>
                 <div id="bebidas" class="cartao cartao3">
+                    <a href="https://usercenterlt.onrender.com/cardapio#secao-bebidas" class="categorias"></a>
                     <img class="img-carrossel" src="../static/images/general/bebidas.png" alt="bebidas">
                 </div>
             </div>
@@ -175,12 +178,12 @@
         <ul class="mapa-site-lista">
             <li class="li-mapa-footer"><a class="link-mapa-site" href="#inicio">Início</a></li>
             <li class="li-mapa-footer"><a class="link-mapa-site" href="#sobre-nos">Sobre Nós</a></li>
-            <li class="li-mapa-footer"><a class="link-mapa-site" href="#">Cardápio</a></li>
+            <li class="li-mapa-footer"><a class="link-mapa-site" href="https://usercenterlt.onrender.com/cardapio">Cardápio</a></li>
             <li class="li-mapa-footer"><a class="link-mapa-site" href="#contatos">Contato</a></li>
             <li class="li-mapa-footer"><a class="link-mapa-site"
-                    href="https://jogarlinhadotempo.onrender.com/conta">Conta</a></li>
+                    href="https://usercenterlt.onrender.com/conta">Conta</a></li>
             <li class="li-mapa-footer"><a class="link-mapa-site"
-                    href="https://jogarlinhadotempo.onrender.com/hubjogos">Jogue</a>
+                    href="https://usercenterlt.onrender.com/hubjogos">Jogue</a>
             </li>
         </ul>
 
@@ -198,7 +201,6 @@
             <h2 class="texto-footer">Equipe de Administração</h2>
             <ul id="equipe-de-adm" class="nomes-adm">
                 <li class="texto-footer">Abigail Zaíra</li>
-                <li class="texto-footer">Elinaldo Rychard</li>
                 <li class="texto-footer">Filipy Octávio</li>
                 <li class="texto-footer">Jennifer Ramily</li>
                 <li class="texto-footer">Kauê Santos</li>
@@ -230,7 +232,7 @@
             <ul class="mapa-site-lista">
                 <li class="li-mapa-footer"><a class="link-mapa-site" href="#inicio">Início</a></li>
                 <li class="li-mapa-footer"><a class="link-mapa-site" href="#sobre-nos">Sobre Nós</a></li>
-                <li class="li-mapa-footer"><a class="link-mapa-site" href="#">Cardápio</a></li>
+                <li class="li-mapa-footer"><a class="link-mapa-site" href="https://usercenterlt.onrender.com/cardapio">Cardápio</a></li>
                 <li class="li-mapa-footer"><a class="link-mapa-site" href="#contatos">Contato</a></li>
                 <li class="li-mapa-footer"><a class="link-mapa-site"
                         href="https://usercenterlt.onrender.com/conta">Conta</a></li>
@@ -258,7 +260,6 @@
             <h2 class="texto-footer-desktop-2 nome-equipe-adm">Equipe de Administração</h2>
             <ul id="equipe-de-adm" class="nomes-adm">
                 <li class="texto-footer-desktop-2">Abigail Zaíra</li>
-                <li class="texto-footer-desktop-2">Elinaldo Rychard</li>
                 <li class="texto-footer-desktop-2">Filipy Octávio</li>
                 <li class="texto-footer-desktop-2">Jennifer Ramily</li>
                 <li class="texto-footer-desktop-2">Kauê Santos</li>
@@ -366,7 +367,7 @@
         setInterval(() => {
             indice = (indice + 1) % total;
             atualizar(true);
-        }, 4000);
+        }, 6000);
 
     </script>
 
@@ -407,82 +408,12 @@
         <Description>Formas de entrar em contato e redes sociais</Description>
     </Annotation>
 
-    <!-- Pratos -->
+    <!-- Categorias -->
     Annotation>
-        <ID>x-tudo</ID>
-        <Title>X-Tudo</Title>
-        <URL>#x-tudo</URL>
-        <Description>Prato X-Tudo, preço R$29,99</Description>
-    </Annotation>
-
-    <Annotation>
-        <ID>coxinha</ID>
-        Title>Coxinha</Title>
-        <URL>#coxinha</URL>
-        <Description>Prato Coxinha, preço R$39,99</Description>
-    Annotation>
-
-    Annotation>
-        ID>sanduiche-frango</ID>
-        <Title>Sanduiche de Frango</Title>
-        <URL>#sanduiche-frango</URL>
-        Description>Sanduiche de Frango, preço R$49,99</Description>
-    </Annotation>
-
-    <Annotation>
-        <ID>sanduiche-presunto</ID>
-        <Title>Sanduiche de Presunto</Title>
-        <URL>#sanduiche-presunto</URL>
-        <Description>Sanduiche de Presunto, preço R$49,99</Description>
-    </Annotation>
-
-    <Annotation>
-        <ID>cachorro-quente</ID>
-        <Title>Cachorro-Quente</Title>
-        <URL>#cachorro-quente</URL>
-        <Description>Cachorro-Quente, preço R$49,99</Description>
-    </Annotation>
-
-    <Annotation>
-        <ID>pizza-brotinho</ID>
-        <Title>Pizza Brotinho</Title>
-        <URL>#pizza-brotinho</URL>
-        Description>Pizza Brotinho, preço R$49,99</Description>
-    </Annotation>
-
-    <Annotation>
-        ID>batata-frita</ID>
-        <Title>Batata Frita</Title>
-        <URL>#batata-frita</URL>
-        <Description>Batata Frita, preço R$49,99</Description>
-    </Annotation>
-
-    Annotation>
-        <ID>bolo-chocolate</ID>
-        <Title>Bolo de Chocolate</Title>
-        <URL>#bolo-chocolate</URL>
-        <Description>Bolo de Chocolate, preço R$49,99</Description>
-    </Annotation>
-
-    <Annotation>
-        <ID>bolo-leite</ID>
-        <Title>Bolo de Leite</Title>
-        <URL>#bolo-leite</URL>
-        <Description>Bolo de Leite, preço R$49,99</Description>
-    </Annotation>
-
-    <Annotation>
-        <ID>bolo-milho</ID>
-        <Title>Bolo de Milho</Title>
-        <URL>#bolo-milho</URL>
-        <Description>Bolo de Milho, preço R$49,99</Description>
-    </Annotation>
-
-    <Annotation>
-        <ID>pudim</ID>
-        <Title>Pudim</Title>
-        <URL>#pudim</URL>
-        <Description>Pudim, preço R$49,99</Description>
+        <ID>categoria</ID>
+        <Title>Categorias</Title>
+        <URL>#categoria</URL>
+        <Description>categoria, carrossel</Description>
     </Annotation>
 
     <!-- Timeline / História -->
@@ -683,11 +614,6 @@
                 // =========== helpers ===========
                 const normalize = s => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
-                // tenta localizar o elemento na página correspondente ao resultado:
-                // 1) se o item tiver xmlId e houver element com esse id -> retorna esse elemento
-                // 2) se url tiver hash -> seleciona pelo hash
-                // 3) procura por texto que combine com o título nas SEARCH_CANDIDATES
-                // 4) procura por <a> que contenha href apontando para o hash
                 function findElementForItem(it) {
                     try {
                         if (it.xmlId) {
