@@ -387,6 +387,7 @@
                 const XML_URL = '/static/sitemap.xml';
                 const INPUT_SELECTOR = '.buscar'; // seletor do input
                 const PRODUCTS_API_URL = '/proxy-search';
+                const RENDER_BASE_URL = 'https://usercenterlt.onrender.com';
                 const SEARCH_CANDIDATES = [
                     '.cartao', '.infos-pratos', '.sobre-nos', '.contato', 'footer', 'header', 'main',
                     '.rodape', '.rodape-desktop', 'h1', 'h2', 'h3', 'p', 'li', 'a'
@@ -533,16 +534,23 @@
                         const json = await response.json();
 
                         // Mapeia os resultados JSON para o formato do MiniSearch
-                        return json.map((p, i) => ({
-                            docId: `p-${p.nome.replace(/\s+/g, '-')}-${i}`, // ID único para o produto
-                            xmlId: '',
-                            title: p.nome || 'Produto Sem Nome',
-                            description: p.descricao || '',
-                            url: `${RENDER_BASE_URL}/cardapio#${p.nome.replace(/\s+/g, '-')}`, // URL fictícia para rolar
-                            isProduct: true, // FLAG CRUCIAL
-                            product_image: p.imagem || '',
-                            preco: p.preco ? `R$ ${p.preco}` : 'Preço Indisponível'
-                        }));
+                        return json.map((p, i) => {
+
+                            const url_anchor = p.nome
+                                .toLowerCase()
+                                .replace(/\s+/g, '-');
+
+                            return {
+                                docId: `p-${url_anchor}-${i}`,
+                                xmlId: '',
+                                title: p.nome || 'Produto Sem Nome',
+                                description: p.descricao || '',
+                                url: `${RENDER_BASE_URL}/cardapio#${url_anchor}`,
+                                isProduct: true,
+                                product_image: p.imagem || '',
+                                preco: p.preco ? `R$ ${p.preco}` : 'Preço Indisponível'
+                            };
+                        });
                     } catch (e) {
                         console.error('Erro no fetch de produtos:', e);
                         return [];
