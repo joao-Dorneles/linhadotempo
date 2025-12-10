@@ -538,7 +538,7 @@
                             xmlId: '',
                             title: p.nome || 'Produto Sem Nome',
                             description: p.descricao || '',
-                            url: `#${p.nome.replace(/\s+/g, '-')}`, // URL fictícia para rolar
+                            url: `${RENDER_BASE_URL}/cardapio#${p.nome.replace(/\s+/g, '-')}`, // URL fictícia para rolar
                             isProduct: true, // FLAG CRUCIAL
                             product_image: p.imagem || '',
                             preco: p.preco ? `R$ ${p.preco}` : 'Preço Indisponível'
