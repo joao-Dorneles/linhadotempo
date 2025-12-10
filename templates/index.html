@@ -386,6 +386,7 @@
                 // =========== CONFIG ===========
                 const XML_URL = '/static/sitemap.xml';
                 const INPUT_SELECTOR = '.buscar'; // seletor do input
+                const PRODUCTS_API_URL = '/proxy-search';
                 const SEARCH_CANDIDATES = [
                     '.cartao', '.infos-pratos', '.sobre-nos', '.contato', 'footer', 'header', 'main',
                     '.rodape', '.rodape-desktop', 'h1', 'h2', 'h3', 'p', 'li', 'a'
@@ -521,6 +522,32 @@
                 window.addEventListener('resize', positionResultsBox);
                 window.addEventListener('scroll', () => { if (resultsBox.style.display !== 'none') positionResultsBox(); });
 
+                async function fetchProductResults(q) {
+                    if (!q) return [];
+                    try {
+                        const response = await fetch(`${PRODUCTS_API_URL}?q=${q}`);
+                        if (!response.ok) {
+                            console.error('Proxy retornou erro:', response.status);
+                            return [];
+                        }
+                        const json = await response.json();
+
+                        // Mapeia os resultados JSON para o formato do MiniSearch
+                        return json.map((p, i) => ({
+                            docId: `p-${p.nome.replace(/\s+/g, '-')}-${i}`, // ID único para o produto
+                            xmlId: '',
+                            title: p.nome || 'Produto Sem Nome',
+                            description: p.descricao || '',
+                            url: `#${p.nome.replace(/\s+/g, '-')}`, // URL fictícia para rolar
+                            isProduct: true, // FLAG CRUCIAL
+                            product_image: p.imagem || '',
+                            preco: p.preco ? `R$ ${p.preco}` : 'Preço Indisponível'
+                        }));
+                    } catch (e) {
+                        console.error('Erro no fetch de produtos:', e);
+                        return [];
+                    }
+                }
                 // =========== XML loader ===========
                 async function loadAnnotations() {
                     // tenta buscar o XML; se falhar, usa INLINE_XML
@@ -701,21 +728,63 @@
                         wrap.style.marginBottom = '6px';
                         wrap.tabIndex = -1;
 
-                        const title = document.createElement('div');
-                        title.style.fontWeight = 700; title.style.fontSize = '14px';
-                        title.textContent = r.title || r.url || 'resultado';
+                        // NOVO: Lógica de exibição de PRODUTOS
+                        if (r.isProduct) {
+                            wrap.style.display = 'flex';
+                            wrap.style.alignItems = 'center';
+                            wrap.style.gap = '10px';
 
-                        const url = document.createElement('div');
-                        url.style.fontSize = '12px'; url.style.color = '#1a73e8';
-                        url.textContent = r.url ? stripOrigin(r.url) : '';
+                            const content = document.createElement('div');
+                            content.style.flexGrow = 1;
 
-                        const desc = document.createElement('div');
-                        desc.style.fontSize = '12px'; desc.style.color = '#666'; desc.style.marginTop = '4px';
-                        desc.textContent = r.description || '';
+                            if (r.product_image) {
+                                const img = document.createElement('img');
+                                img.src = r.product_image;
+                                img.alt = r.title;
+                                img.style.width = '48px';
+                                img.style.height = '48px';
+                                img.style.objectFit = 'cover';
+                                img.style.borderRadius = '6px';
+                                wrap.appendChild(img);
+                            }
 
-                        wrap.appendChild(title);
-                        if (r.url) wrap.appendChild(url);
-                        if (r.description) wrap.appendChild(desc);
+                            const title = document.createElement('div');
+                            title.style.fontWeight = 700; title.style.fontSize = '14px';
+                            title.textContent = r.title || 'Produto Sem Nome';
+                            content.appendChild(title);
+
+                            const desc = document.createElement('div');
+                            desc.style.fontSize = '12px'; desc.style.color = '#666'; desc.textContent = r.description || '';
+                            content.appendChild(desc);
+
+                            if (r.preco) {
+                                const price = document.createElement('div');
+                                price.style.fontWeight = 700; price.style.fontSize = '14px';
+                                price.style.color = '#28a745'; // Cor verde para preço
+                                price.textContent = r.preco;
+                                content.appendChild(price);
+                            }
+
+                            wrap.appendChild(content);
+
+                        } else {
+                            // Lógica de exibição de LINKS/SITEMAP (XML)
+                            const title = document.createElement('div');
+                            title.style.fontWeight = 700; title.style.fontSize = '14px';
+                            title.textContent = r.title || r.url || 'resultado';
+
+                            const url = document.createElement('div');
+                            url.style.fontSize = '12px'; url.style.color = '#1a73e8';
+                            url.textContent = r.url ? stripOrigin(r.url) : '';
+
+                            const desc = document.createElement('div');
+                            desc.style.fontSize = '12px'; desc.style.color = '#666'; desc.style.marginTop = '4px';
+                            desc.textContent = r.description || '';
+
+                            wrap.appendChild(title);
+                            if (r.url) wrap.appendChild(url);
+                            if (r.description) wrap.appendChild(desc);
+                        }
 
                         wrap.addEventListener('click', () => onResultClick(r));
                         wrap.addEventListener('mouseover', () => highlightIndex(parseInt(wrap.dataset.index)));
@@ -745,23 +814,33 @@
                     }
                 }
 
-                function doSearch(q) {
+                async function doSearch(q) {
                     q = (q || '').trim();
                     if (!q) return [];
+
+                    // 1. Busca Local (MiniSearch/XML)
                     let msResults = mini.search(q, { prefix: true, fuzzy: 0.2, combineWith: 'AND' }) || [];
                     msResults = msResults.map(r => ({ title: r.title || '', url: r.url || '', description: r.description || '', xmlId: r.xmlId || '' }));
 
-                    const substringMatches = items.filter(it => {
-                        const s = ((it.title || '') + ' ' + (it.description || '') + ' ' + (it.url || '')).toLowerCase();
-                        return s.includes(q.toLowerCase());
-                    }).slice(0, 10).map(it => ({ title: it.title, url: it.url, description: it.description, xmlId: it.xmlId }));
+                    // 2. Busca Remota (Produtos via Proxy/JSON)
+                    const productResults = await fetchProductResults(q); // <-- CHAVE AQUI!
 
+                    // 3. Combina e Dedup
                     const combined = [];
                     const seenKeys = new Set();
-                    msResults.concat(substringMatches).forEach(r => {
+
+                    // Adiciona produtos (dando prioridade visual)
+                    productResults.forEach(p => {
+                        const key = (p.title || p.url || JSON.stringify(p));
+                        if (!seenKeys.has(key)) { seenKeys.add(key); combined.push(p); }
+                    });
+
+                    // Adiciona links/sitemap
+                    msResults.forEach(r => {
                         const key = (r.url || r.title || JSON.stringify(r));
                         if (!seenKeys.has(key)) { seenKeys.add(key); combined.push(r); }
                     });
+
                     return combined.slice(0, 20);
                 }
 
@@ -777,10 +856,13 @@
                 }
                 function moveHighlight(delta) { const options = Array.from(resultsBox.querySelectorAll('[role="option"]')); if (!options.length) return; highlightIndex(currentHighlight + delta); }
 
-                const onInput = debounce(() => {
+                const onInput = debounce(async () => {
                     const q = input.value.trim();
                     if (!q) { resultsBox.style.display = 'none'; resultsBox.setAttribute('aria-hidden', 'true'); return; }
-                    const results = doSearch(q);
+
+                    // Agora chama a doSearch que é async
+                    const results = await doSearch(q);
+
                     renderResults(results);
                 }, 120);
 
